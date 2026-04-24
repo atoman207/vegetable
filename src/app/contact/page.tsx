@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Mail, Phone, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Header } from "@/components/site/Header";
@@ -17,7 +19,7 @@ const inquiryTypes = [
   "その他",
 ];
 
-const ContactPage = () => {
+export default function ContactPage() {
   const ref = useReveal<HTMLDivElement>();
   const [submitted, setSubmitted] = useState(false);
 
@@ -217,6 +219,4 @@ const ContactPage = () => {
       <Footer />
     </div>
   );
-};
-
-export default ContactPage;
+}

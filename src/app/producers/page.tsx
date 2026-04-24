@@ -4,7 +4,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Network } from "@/components/site/Network";
 import { Producers as ProducersSection } from "@/components/site/Producers";
 
-const ProducersPage = () => {
+export default function ProducersPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -24,6 +24,4 @@ const ProducersPage = () => {
       <Footer />
     </div>
   );
-};
-
-export default ProducersPage;
+}

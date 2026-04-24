@@ -1,3 +1,5 @@
+"use client";
+
 import { useMemo, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/site/Header";
@@ -11,7 +13,7 @@ type Category = "All" | "Shipping" | "Notice" | "Company" | "Producer";
 
 const categories: Category[] = ["All", "Shipping", "Notice", "Company", "Producer"];
 
-const NewsPage = () => {
+export default function NewsPage() {
   const [active, setActive] = useState<Category>("All");
   const ref = useReveal<HTMLDivElement>();
   const { data: news = [], isLoading } = useNews();
@@ -39,7 +41,6 @@ const NewsPage = () => {
           <div className="absolute top-0 left-0 w-40 md:w-64 h-48 wa-asanoha opacity-40 pointer-events-none" />
 
           <div className="container relative">
-            {/* Filter tabs */}
             <div className="flex flex-wrap gap-2 md:gap-3 mb-10 md:mb-12 border-b border-border pb-4 overflow-x-auto reveal">
               {categories.map((c) => (
                 <button
@@ -86,7 +87,7 @@ const NewsPage = () => {
                 </article>
               ))}
 
-              {filtered.length === 0 && (
+              {filtered.length === 0 && !isLoading && (
                 <p className="py-12 text-center text-muted-foreground text-sm">該当するお知らせはありません。</p>
               )}
             </div>
@@ -96,6 +97,4 @@ const NewsPage = () => {
       <Footer />
     </div>
   );
-};
-
-export default NewsPage;
+}

@@ -77,15 +77,15 @@ export type Admin = {
 export type Database = {
   public: {
     Tables: {
-      regions:   { Row: Region;   Insert: RegionInsert;   Update: Partial<RegionInsert> };
-      producers: { Row: Producer; Insert: ProducerInsert; Update: Partial<ProducerInsert> };
-      products:  { Row: Product;  Insert: ProductInsert;  Update: Partial<ProductInsert> };
-      news:      { Row: NewsItem; Insert: NewsInsert;     Update: Partial<NewsInsert> };
-      admins:    { Row: Admin;    Insert: Partial<Admin>; Update: Partial<Admin> };
+      regions:   { Row: Region;   Insert: RegionInsert;   Update: Partial<RegionInsert>; Relationships: [] };
+      producers: { Row: Producer; Insert: ProducerInsert; Update: Partial<ProducerInsert>; Relationships: [] };
+      products:  { Row: Product;  Insert: ProductInsert;  Update: Partial<ProductInsert>; Relationships: [] };
+      news:      { Row: NewsItem; Insert: NewsInsert;     Update: Partial<NewsInsert>; Relationships: [] };
+      admins:    { Row: Admin;    Insert: Partial<Admin>; Update: Partial<Admin>; Relationships: [] };
     };
-    Views: Record<string, never>;
-    Functions: Record<string, never>;
-    Enums: Record<string, never>;
-    CompositeTypes: Record<string, never>;
+    Views: { [_ in never]: never };
+    Functions: { [_ in never]: never };
+    Enums: { [_ in never]: never };
+    CompositeTypes: { [_ in never]: never };
   };
 };

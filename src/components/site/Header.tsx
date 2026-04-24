@@ -1,5 +1,8 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -17,9 +20,8 @@ const navItems = [
 export const Header = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { pathname } = useLocation();
+  const pathname = usePathname() ?? "/";
 
-  // On sub-pages, force the solid header styling so text stays readable.
   const isHome = pathname === "/";
   const solid = !isHome || scrolled;
 
@@ -30,12 +32,10 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close the drawer whenever the route changes.
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
-  // Lock body scroll while mobile menu is open.
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -58,9 +58,9 @@ export const Header = () => {
         )}
       >
         <div className="flex h-16 md:h-20 items-center justify-between px-[5vw]">
-          <Link to="/" className="group">
+          <Link href="/" className="group">
             <img
-              src={logoImage}
+              src={logoImage.src}
               alt="W・H株式会社 ロゴ"
               className="h-10 md:h-12 w-auto"
             />
@@ -72,7 +72,7 @@ export const Header = () => {
               return (
                 <Link
                   key={item.to}
-                  to={item.to}
+                  href={item.to}
                   className={cn(
                     "text-xs font-medium tracking-[0.15em] uppercase transition-smooth relative group py-1",
                     solid
@@ -119,7 +119,7 @@ export const Header = () => {
                   : "bg-sun text-foreground hover:bg-sun/90"
               )}
             >
-              <Link to="/contact">Contact</Link>
+              <Link href="/contact">Contact</Link>
             </Button>
             <button
               onClick={() => setOpen(!open)}
@@ -163,7 +163,7 @@ export const Header = () => {
                   className="transition-all duration-500"
                 >
                   <Link
-                    to={item.to}
+                    href={item.to}
                     onClick={() => setOpen(false)}
                     className="group flex items-baseline gap-4 py-2 border-b border-primary-foreground/10"
                   >
@@ -196,7 +196,7 @@ export const Header = () => {
               asChild
               className="bg-sun text-foreground hover:bg-sun/90 rounded-none h-12 tracking-wider self-start px-7"
             >
-              <Link to="/contact">お問い合わせ</Link>
+              <Link href="/contact">お問い合わせ</Link>
             </Button>
             <a
               href="tel:03-5432-8761"

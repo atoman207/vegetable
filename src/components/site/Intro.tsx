@@ -1,3 +1,5 @@
+"use client";
+
 import { Sprout } from "lucide-react";
 import vegetables from "@/assets/vegetables.jpg";
 import { useReveal } from "@/hooks/use-reveal";
@@ -80,7 +82,7 @@ export const Intro = () => {
               <div className="absolute -top-6 -left-6 md:-top-8 md:-left-8 w-full h-full border-2 border-sun/60 hidden md:block" />
               <div className="relative overflow-hidden shadow-elegant">
                 <img
-                  src={vegetables}
+                  src={vegetables.src}
                   alt="新鮮な野菜の盛り合わせ"
                   loading="lazy"
                   width={960}

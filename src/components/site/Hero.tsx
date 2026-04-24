@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, Leaf, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-farm.jpg";
@@ -33,7 +35,7 @@ export const Hero = () => {
         style={{ transform: `translate3d(0, ${scrollY * 0.3}px, 0)` }}
       >
         <img
-          src={heroImage}
+          src={heroImage.src}
           alt="日本の青々とした野菜畑の風景"
           width={1920}
           height={1080}
@@ -108,7 +110,7 @@ export const Hero = () => {
                 size="lg"
                 className="bg-sun text-foreground hover:bg-sun/90 rounded-none font-medium text-sm h-14 px-7 tracking-wider group shadow-pop"
               >
-                <Link to="/services">
+                <Link href="/services">
                   VIEW SERVICES
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -119,7 +121,7 @@ export const Hero = () => {
                 variant="outline"
                 className="bg-transparent backdrop-blur-sm border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-none font-medium text-sm h-14 px-7 tracking-wider"
               >
-                <Link to="/contact">
+                <Link href="/contact">
                   <Phone className="mr-2 h-4 w-4" />
                   CONTACT
                 </Link>

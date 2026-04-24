@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 type PageHeroProps = {
@@ -28,14 +28,14 @@ export const PageHero = ({
 
       <div className="container relative">
         <div className="flex items-center gap-2 text-[10px] md:text-xs tracking-[0.25em] uppercase text-primary-foreground/60 mb-8 md:mb-12">
-          <Link to="/" className="hover:text-sun transition-smooth">
+          <Link href="/" className="hover:text-sun transition-smooth">
             Home
           </Link>
           {breadcrumb?.map((b, i) => (
             <span key={i} className="flex items-center gap-2">
               <ChevronRight className="h-3 w-3 opacity-50" />
               {b.to ? (
-                <Link to={b.to} className="hover:text-sun transition-smooth">
+                <Link href={b.to} className="hover:text-sun transition-smooth">
                   {b.label}
                 </Link>
               ) : (

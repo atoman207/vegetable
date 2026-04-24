@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import producer1 from "@/assets/producer-1.jpg";
 import producer2 from "@/assets/producer-2.jpg";
 import producer3 from "@/assets/producer-3.jpg";
@@ -7,7 +9,7 @@ import { useReveal } from "@/hooks/use-reveal";
 import { useProducers } from "@/hooks/use-content";
 
 // Fallback images (cycled by producer sort order) when a row has no image_url.
-const fallbackImages = [producer1, producer2, producer3];
+const fallbackImages = [producer1.src, producer2.src, producer3.src];
 
 export const Producers = () => {
   const ref = useReveal<HTMLDivElement>();
@@ -57,7 +59,7 @@ export const Producers = () => {
           </div>
           <div className="lg:col-span-3 flex justify-start lg:justify-end reveal delay-200">
             <Link
-              to="/producers"
+              href="/producers"
               className="text-xs font-medium text-foreground tracking-[0.2em] uppercase hover:text-primary transition-smooth inline-flex items-center gap-2 group"
             >
               View All

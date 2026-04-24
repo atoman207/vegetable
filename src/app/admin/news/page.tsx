@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, type FormEvent } from "react";
 import { Plus, Pencil, Trash2, Loader2, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -60,7 +62,7 @@ const empty: FormState = {
   sort_order: 10,
 };
 
-const AdminNews = () => {
+export default function AdminNewsPage() {
   const { data: news = [], isLoading } = useNews({ includeUnpublished: true });
   const upsert = useUpsertNews();
   const del = useDeleteNews();
@@ -391,6 +393,4 @@ const AdminNews = () => {
       </AlertDialog>
     </div>
   );
-};
-
-export default AdminNews;
+}

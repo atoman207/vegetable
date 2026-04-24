@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -21,7 +23,7 @@ const philosophy = [
   { en: "Partnership", ja: "共に歩む", desc: "お客様の事業を、真ん中で支え続けます。" },
 ];
 
-const About = () => {
+export default function AboutPage() {
   const ref = useReveal<HTMLDivElement>();
 
   return (
@@ -40,7 +42,6 @@ const About = () => {
 
         <Intro />
 
-        {/* Philosophy */}
         <section ref={ref} className="py-20 md:py-32 bg-secondary relative overflow-hidden">
           <div className="absolute top-0 right-0 w-48 md:w-80 h-full wa-asanoha opacity-40 pointer-events-none hidden md:block" />
           <div className="blob bg-matcha/20 w-[320px] h-[320px] -top-10 -left-10 hidden md:block" />
@@ -83,7 +84,6 @@ const About = () => {
           </div>
         </section>
 
-        {/* Timeline */}
         <section className="py-20 md:py-32 bg-background relative overflow-hidden">
           <div className="absolute -top-2 right-0 text-[110px] sm:text-[180px] md:text-[260px] font-serif font-bold leading-none select-none pointer-events-none [-webkit-text-stroke:1px_hsl(var(--primary)/0.08)] text-transparent">
             History
@@ -127,7 +127,6 @@ const About = () => {
           </div>
         </section>
 
-        {/* CTA */}
         <section className="py-16 md:py-24 bg-gradient-editorial text-primary-foreground relative overflow-hidden">
           <div className="absolute inset-0 wa-seigaiha-light pointer-events-none" />
           <div className="container relative text-center">
@@ -138,13 +137,13 @@ const About = () => {
             </h3>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button asChild size="lg" className="bg-sun text-foreground hover:bg-sun/90 rounded-none h-14 px-7 tracking-wider">
-                <Link to="/services">
+                <Link href="/services">
                   業務内容を見る
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-none h-14 px-7 tracking-wider">
-                <Link to="/contact">お問い合わせ</Link>
+                <Link href="/contact">お問い合わせ</Link>
               </Button>
             </div>
           </div>
@@ -153,6 +152,4 @@ const About = () => {
       <Footer />
     </div>
   );
-};
-
-export default About;
+}

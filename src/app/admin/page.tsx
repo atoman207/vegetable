@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { Users, Newspaper, Database, ExternalLink } from "lucide-react";
 import { useNews, useProducers } from "@/hooks/use-content";
 
-const AdminDashboard = () => {
+export default function AdminDashboardPage() {
   const { data: producers = [] } = useProducers();
   const { data: news = [] } = useNews({ includeUnpublished: true });
 
@@ -22,7 +24,7 @@ const AdminDashboard = () => {
 
       <div className="grid md:grid-cols-2 gap-6">
         <Link
-          to="/admin/producers"
+          href="/admin/producers"
           className="group block bg-background border border-border p-6 md:p-8 hover:shadow-card transition-smooth"
         >
           <div className="flex items-center justify-between mb-4">
@@ -37,7 +39,7 @@ const AdminDashboard = () => {
         </Link>
 
         <Link
-          to="/admin/news"
+          href="/admin/news"
           className="group block bg-background border border-border p-6 md:p-8 hover:shadow-card transition-smooth"
         >
           <div className="flex items-center justify-between mb-4">
@@ -71,6 +73,4 @@ const AdminDashboard = () => {
       </div>
     </div>
   );
-};
-
-export default AdminDashboard;
+}

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, type FormEvent } from "react";
 import { Plus, Pencil, Trash2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -49,7 +51,7 @@ const empty: FormState = {
   sort_order: 10,
 };
 
-const AdminProducers = () => {
+export default function AdminProducersPage() {
   const { data: producers = [], isLoading } = useProducers();
   const upsert = useUpsertProducer();
   const del = useDeleteProducer();
@@ -354,6 +356,4 @@ const AdminProducers = () => {
       </AlertDialog>
     </div>
   );
-};
-
-export default AdminProducers;
+}

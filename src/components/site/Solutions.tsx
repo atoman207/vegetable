@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowRight, HelpCircle } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 

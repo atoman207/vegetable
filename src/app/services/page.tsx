@@ -6,7 +6,7 @@ import { Solutions } from "@/components/site/Solutions";
 import { Safety } from "@/components/site/Safety";
 import { Products } from "@/components/site/Products";
 
-const Services = () => {
+export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -28,6 +28,4 @@ const Services = () => {
       <Footer />
     </div>
   );
-};
-
-export default Services;
+}

@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 import logoImage from "@/assets/logo.png";
 
@@ -56,9 +58,9 @@ export const Footer = () => {
 
         <div className="grid lg:grid-cols-12 gap-10 md:gap-12 mb-12 md:mb-16">
           <div className="lg:col-span-5">
-            <Link to="/" className="inline-flex mb-6 group">
+            <Link href="/" className="inline-flex mb-6 group">
               <img
-                src={logoImage}
+                src={logoImage.src}
                 alt="W・H株式会社 ロゴ"
                 className="h-10 md:h-12 w-auto"
               />
@@ -102,7 +104,7 @@ export const Footer = () => {
                     {col.links.map((l) => (
                       <li key={l.label}>
                         <Link
-                          to={l.to}
+                          href={l.to}
                           className="text-sm text-primary-foreground/70 hover:text-sun transition-smooth link-underline inline-block"
                         >
                           {l.label}
@@ -119,8 +121,8 @@ export const Footer = () => {
         <div className="pt-6 md:pt-8 border-t border-primary-foreground/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-primary-foreground/50 tracking-wider">
           <div>© {new Date().getFullYear()} W·H Inc. — All Rights Reserved.</div>
           <div className="flex gap-6">
-            <Link to="/access#terms" className="hover:text-sun transition-smooth">Terms</Link>
-            <Link to="/access#privacy" className="hover:text-sun transition-smooth">Privacy</Link>
+            <Link href="/access#terms" className="hover:text-sun transition-smooth">Terms</Link>
+            <Link href="/access#privacy" className="hover:text-sun transition-smooth">Privacy</Link>
           </div>
         </div>
       </div>

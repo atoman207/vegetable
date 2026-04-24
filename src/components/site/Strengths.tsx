@@ -1,3 +1,5 @@
+"use client";
+
 import { Truck, ShieldCheck, BadgeJapaneseYen } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 

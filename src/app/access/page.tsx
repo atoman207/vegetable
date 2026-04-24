@@ -1,3 +1,5 @@
+"use client";
+
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
@@ -33,7 +35,7 @@ const offices = [
   },
 ];
 
-const Access = () => {
+export default function AccessPage() {
   const ref = useReveal<HTMLDivElement>();
 
   return (
@@ -50,7 +52,6 @@ const Access = () => {
           breadcrumb={[{ label: "会社案内" }]}
         />
 
-        {/* Company info table */}
         <section ref={ref} className="py-20 md:py-32 bg-background relative overflow-hidden">
           <div className="absolute top-0 right-0 w-48 md:w-80 h-full wa-seigaiha opacity-40 pointer-events-none hidden md:block" />
 
@@ -85,7 +86,6 @@ const Access = () => {
           </div>
         </section>
 
-        {/* Offices */}
         <section className="py-20 md:py-32 bg-secondary relative overflow-hidden">
           <div className="absolute inset-0 wa-shippou opacity-50 pointer-events-none" />
           <div className="blob bg-matcha/20 w-[320px] h-[320px] -bottom-10 -left-10 hidden md:block" />
@@ -146,7 +146,6 @@ const Access = () => {
           </div>
         </section>
 
-        {/* Privacy / Terms */}
         <section id="privacy" className="py-20 md:py-32 bg-background">
           <div className="container max-w-4xl">
             <div className="grid lg:grid-cols-12 gap-10 mb-12">
@@ -189,7 +188,6 @@ const Access = () => {
           </div>
         </section>
 
-        {/* Email contact */}
         <section className="py-16 md:py-20 bg-gradient-editorial text-primary-foreground relative overflow-hidden">
           <div className="absolute inset-0 wa-seigaiha-light pointer-events-none" />
           <div className="container relative text-center">
@@ -208,6 +206,4 @@ const Access = () => {
       <Footer />
     </div>
   );
-};
-
-export default Access;
+}

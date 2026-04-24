@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
@@ -89,7 +91,7 @@ export const Network = () => {
             variant="outline"
             className="border-sun text-sun hover:bg-sun hover:text-foreground rounded-none font-medium tracking-wider bg-transparent group"
           >
-            <Link to="/producers">
+            <Link href="/producers">
               VIEW ALL PRODUCERS
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>

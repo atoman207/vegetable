@@ -1,3 +1,5 @@
+"use client";
+
 import { Carrot } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { useProducts } from "@/hooks/use-content";

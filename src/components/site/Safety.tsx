@@ -1,3 +1,5 @@
+"use client";
+
 import { ShieldCheck } from "lucide-react";
 import qualityImg from "@/assets/quality-check.jpg";
 import { useReveal } from "@/hooks/use-reveal";
@@ -27,7 +29,7 @@ export const Safety = () => {
               <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-sun/60 hidden md:block" />
               <div className="relative overflow-hidden shadow-elegant">
                 <img
-                  src={qualityImg}
+                  src={qualityImg.src}
                   alt="品質管理の様子"
                   loading="lazy"
                   width={960}

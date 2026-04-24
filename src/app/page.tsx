@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { ArrowUpRight, Truck, ShieldCheck, BadgeJapaneseYen, MapPin, Newspaper } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
@@ -17,9 +19,9 @@ const strengthPreview = [
   { icon: BadgeJapaneseYen, title: "適正価格", en: "Fair Pricing" },
 ];
 
-const fallbackProducerImgs = [producer1, producer2, producer3];
+const fallbackProducerImgs = [producer1.src, producer2.src, producer3.src];
 
-const Index = () => {
+export default function Home() {
   const ref = useReveal<HTMLDivElement>();
   const { data: producers = [] } = useProducers();
   const { data: news = [] } = useNews();
@@ -50,7 +52,7 @@ const Index = () => {
                 <div className="relative group">
                   <div className="absolute -top-4 -left-4 md:-top-6 md:-left-6 w-full h-full border-2 border-sun/60 hidden md:block" />
                   <img
-                    src={vegetables}
+                    src={vegetables.src}
                     alt="新鮮な野菜"
                     loading="lazy"
                     className="relative w-full aspect-[4/5] object-cover shadow-elegant"
@@ -74,7 +76,7 @@ const Index = () => {
                   私たちW・H株式会社は、全国の生産者の皆さまと飲食・小売・加工業のお客様をつなぐ、産直流通の専門会社です。
                 </p>
                 <Button asChild variant="outline" className="rounded-none border-foreground hover:bg-foreground hover:text-primary-foreground tracking-[0.15em] uppercase text-xs h-12 px-6 group">
-                  <Link to="/about">
+                  <Link href="/about">
                     MORE ABOUT US
                     <ArrowUpRight className="ml-2 h-4 w-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </Link>
@@ -131,7 +133,7 @@ const Index = () => {
 
             <div className="flex justify-center reveal">
               <Button asChild className="bg-foreground text-primary-foreground hover:bg-primary rounded-none h-12 px-7 tracking-[0.15em] uppercase text-xs">
-                <Link to="/services">
+                <Link href="/services">
                   VIEW ALL SERVICES
                   <ArrowUpRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -158,7 +160,7 @@ const Index = () => {
               </div>
               <div className="lg:col-span-5 flex lg:justify-end reveal delay-100">
                 <Link
-                  to="/producers"
+                  href="/producers"
                   className="text-xs font-medium text-foreground tracking-[0.2em] uppercase hover:text-primary transition-smooth inline-flex items-center gap-2 group"
                 >
                   View All
@@ -172,7 +174,7 @@ const Index = () => {
               {producerPreview.map((p, i) => (
                 <Link
                   key={p.name}
-                  to="/producers"
+                  href="/producers"
                   className="group reveal"
                   style={{ transitionDelay: `${i * 120}ms` }}
                 >
@@ -217,7 +219,7 @@ const Index = () => {
               </div>
               <div className="lg:col-span-5 flex lg:justify-end reveal delay-100">
                 <Link
-                  to="/news"
+                  href="/news"
                   className="text-xs font-medium text-foreground tracking-[0.2em] uppercase hover:text-primary transition-smooth inline-flex items-center gap-2 group"
                 >
                   View All
@@ -231,7 +233,7 @@ const Index = () => {
               {recentNews.map((n, i) => (
                 <Link
                   key={n.id}
-                  to="/news"
+                  href="/news"
                   className="flex flex-col md:grid md:grid-cols-[100px_140px_1fr_auto] gap-2 md:gap-8 items-start md:items-center py-6 md:py-8 group hover:md:px-4 border-b border-border transition-all duration-500 reveal"
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
@@ -269,7 +271,7 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button asChild size="lg" className="bg-sun text-foreground hover:bg-sun/90 rounded-none h-14 px-7 tracking-wider">
-                <Link to="/contact">お問い合わせフォーム</Link>
+                <Link href="/contact">お問い合わせフォーム</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground hover:text-foreground rounded-none h-14 px-7 tracking-wider">
                 <a href="tel:03-5432-8761">03-5432-8761</a>
@@ -281,6 +283,4 @@ const Index = () => {
       <Footer />
     </div>
   );
-};
-
-export default Index;
+}
