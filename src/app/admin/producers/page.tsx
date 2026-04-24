@@ -34,10 +34,19 @@ type FormState = {
   name: string;
   name_en: string;
   region: string;
+  prefecture: string;
   image_url: string;
+  main_produce: string;
+  characteristics: string;
   items: string;
   note: string;
   sort_order: number;
+  photo1_url: string;
+  photo1_caption: string;
+  photo2_url: string;
+  photo2_caption: string;
+  photo3_url: string;
+  photo3_caption: string;
 };
 
 const empty: FormState = {
@@ -45,10 +54,19 @@ const empty: FormState = {
   name: "",
   name_en: "",
   region: "",
+  prefecture: "",
   image_url: "",
+  main_produce: "",
+  characteristics: "",
   items: "",
   note: "",
   sort_order: 10,
+  photo1_url: "",
+  photo1_caption: "",
+  photo2_url: "",
+  photo2_caption: "",
+  photo3_url: "",
+  photo3_caption: "",
 };
 
 export default function AdminProducersPage() {
@@ -72,10 +90,19 @@ export default function AdminProducersPage() {
       name: p.name,
       name_en: p.name_en,
       region: p.region,
+      prefecture: p.prefecture ?? "",
       image_url: p.image_url ?? "",
+      main_produce: p.main_produce ?? "",
+      characteristics: p.characteristics ?? "",
       items: p.items.join(", "),
       note: p.note ?? "",
       sort_order: p.sort_order,
+      photo1_url: p.photo1_url ?? "",
+      photo1_caption: p.photo1_caption ?? "",
+      photo2_url: p.photo2_url ?? "",
+      photo2_caption: p.photo2_caption ?? "",
+      photo3_url: p.photo3_url ?? "",
+      photo3_caption: p.photo3_caption ?? "",
     });
     setDialogOpen(true);
   };
@@ -89,13 +116,22 @@ export default function AdminProducersPage() {
         name: form.name,
         name_en: form.name_en,
         region: form.region,
+        prefecture: form.prefecture || null,
         image_url: form.image_url || null,
+        main_produce: form.main_produce || null,
+        characteristics: form.characteristics || null,
         items: form.items
           .split(",")
           .map((s) => s.trim())
           .filter(Boolean),
         note: form.note || null,
         sort_order: Number(form.sort_order) || 0,
+        photo1_url: form.photo1_url || null,
+        photo1_caption: form.photo1_caption || null,
+        photo2_url: form.photo2_url || null,
+        photo2_caption: form.photo2_caption || null,
+        photo3_url: form.photo3_url || null,
+        photo3_caption: form.photo3_caption || null,
       });
       toast.success(form.id ? "更新しました" : "生産者を追加しました");
       setDialogOpen(false);
@@ -125,7 +161,7 @@ export default function AdminProducersPage() {
             生産者<span className="italic font-normal text-primary">管理</span>
           </h1>
           <p className="text-sm text-muted-foreground mt-2">
-            公開サイトの「生産者紹介」ページで表示される生産者を管理します。
+            公開サイトの「生産者紹介」ページで表示される生産者を管理します。県名・主な生産野菜・特徴・写真3点まで登録できます。
           </p>
         </div>
         <Button onClick={openNew} className="bg-foreground text-primary-foreground hover:bg-primary rounded-none h-11 tracking-[0.15em] uppercase text-xs">
@@ -140,8 +176,8 @@ export default function AdminProducersPage() {
             <tr className="text-left">
               <th className="p-3 md:p-4 text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium w-16">No.</th>
               <th className="p-3 md:p-4 text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">氏名</th>
-              <th className="p-3 md:p-4 text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">地域</th>
-              <th className="p-3 md:p-4 text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">品目</th>
+              <th className="p-3 md:p-4 text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">県名</th>
+              <th className="p-3 md:p-4 text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">主な生産野菜</th>
               <th className="p-3 md:p-4 text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium w-16">Order</th>
               <th className="p-3 md:p-4 text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium w-24 text-right"></th>
             </tr>
@@ -169,8 +205,10 @@ export default function AdminProducersPage() {
                   <div className="font-serif font-bold">{p.name}</div>
                   <div className="text-[11px] text-muted-foreground">{p.name_en}</div>
                 </td>
-                <td className="p-3 md:p-4 text-muted-foreground">{p.region}</td>
-                <td className="p-3 md:p-4 text-muted-foreground">{p.items.join(", ")}</td>
+                <td className="p-3 md:p-4 text-muted-foreground">{p.prefecture || p.region}</td>
+                <td className="p-3 md:p-4 text-muted-foreground line-clamp-1">
+                  {p.main_produce || p.items.join(", ")}
+                </td>
                 <td className="p-3 md:p-4 text-muted-foreground tabular-nums">{p.sort_order}</td>
                 <td className="p-3 md:p-4 text-right">
                   <div className="flex items-center justify-end gap-1">
@@ -202,18 +240,18 @@ export default function AdminProducersPage() {
 
       {/* Edit / create dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="sm:max-w-lg">
+        <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="font-serif text-2xl">
               {form.id ? "生産者を編集" : "生産者を追加"}
             </DialogTitle>
             <DialogDescription>
-              公開サイトに表示される情報を入力してください。
+              公開サイトに表示される情報を入力してください。写真は3点まで登録できます。
             </DialogDescription>
           </DialogHeader>
 
-          <form onSubmit={onSubmit} className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <form onSubmit={onSubmit} className="space-y-5">
+            <div className="grid grid-cols-3 gap-3">
               <div>
                 <Label htmlFor="num">番号 (No.)</Label>
                 <Input
@@ -236,9 +274,20 @@ export default function AdminProducersPage() {
                   className="mt-1.5 rounded-none"
                 />
               </div>
+              <div>
+                <Label htmlFor="region">地方</Label>
+                <Input
+                  id="region"
+                  value={form.region}
+                  onChange={(e) => setForm({ ...form, region: e.target.value })}
+                  placeholder="関東"
+                  required
+                  className="mt-1.5 rounded-none"
+                />
+              </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3">
               <div>
                 <Label htmlFor="name">氏名 (日本語)</Label>
                 <Input
@@ -264,24 +313,49 @@ export default function AdminProducersPage() {
             </div>
 
             <div>
-              <Label htmlFor="region">地域</Label>
+              <Label htmlFor="prefecture">県名 (A軸に表示)</Label>
               <Input
-                id="region"
-                value={form.region}
-                onChange={(e) => setForm({ ...form, region: e.target.value })}
+                id="prefecture"
+                value={form.prefecture}
+                onChange={(e) => setForm({ ...form, prefecture: e.target.value })}
                 placeholder="茨城県"
-                required
+                className="mt-1.5 rounded-none"
+              />
+              <p className="text-[11px] text-muted-foreground mt-1">
+                生産者紹介ページの左サイドに表示される県名です。
+              </p>
+            </div>
+
+            <div>
+              <Label htmlFor="main_produce">主な生産野菜</Label>
+              <Input
+                id="main_produce"
+                value={form.main_produce}
+                onChange={(e) => setForm({ ...form, main_produce: e.target.value })}
+                placeholder="小松菜・ほうれん草・水菜"
                 className="mt-1.5 rounded-none"
               />
             </div>
 
             <div>
-              <Label htmlFor="image_url">画像URL</Label>
+              <Label htmlFor="characteristics">特徴</Label>
+              <Textarea
+                id="characteristics"
+                value={form.characteristics}
+                onChange={(e) => setForm({ ...form, characteristics: e.target.value })}
+                rows={2}
+                placeholder="無化学肥料30年。土づくりから徹底した葉物野菜の名手。"
+                className="mt-1.5 rounded-none"
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="image_url">農家写真 URL (メイン)</Label>
               <Input
                 id="image_url"
                 value={form.image_url}
                 onChange={(e) => setForm({ ...form, image_url: e.target.value })}
-                placeholder="https://…/producer.jpg"
+                placeholder="https://…/producer-main.jpg"
                 className="mt-1.5 rounded-none"
               />
               <p className="text-[11px] text-muted-foreground mt-1">
@@ -289,8 +363,42 @@ export default function AdminProducersPage() {
               </p>
             </div>
 
+            <div className="space-y-4 border border-border p-4 bg-muted/20">
+              <div className="text-[10px] tracking-[0.3em] uppercase text-primary font-medium">
+                写真 1 / 2 / 3
+              </div>
+              {([1, 2, 3] as const).map((n) => {
+                const urlKey = `photo${n}_url` as keyof FormState;
+                const capKey = `photo${n}_caption` as keyof FormState;
+                return (
+                  <div key={n} className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3">
+                    <div>
+                      <Label htmlFor={`photo${n}_url`}>写真{n} URL</Label>
+                      <Input
+                        id={`photo${n}_url`}
+                        value={form[urlKey] as string}
+                        onChange={(e) => setForm({ ...form, [urlKey]: e.target.value } as FormState)}
+                        placeholder="https://…/photo.jpg"
+                        className="mt-1.5 rounded-none"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor={`photo${n}_caption`}>コメント・説明{n}</Label>
+                      <Input
+                        id={`photo${n}_caption`}
+                        value={form[capKey] as string}
+                        onChange={(e) => setForm({ ...form, [capKey]: e.target.value } as FormState)}
+                        placeholder="写真の説明文"
+                        className="mt-1.5 rounded-none"
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
             <div>
-              <Label htmlFor="items">取扱品目 (カンマ区切り)</Label>
+              <Label htmlFor="items">取扱品目 (タグ / カンマ区切り)</Label>
               <Input
                 id="items"
                 value={form.items}
@@ -301,13 +409,13 @@ export default function AdminProducersPage() {
             </div>
 
             <div>
-              <Label htmlFor="note">紹介文</Label>
+              <Label htmlFor="note">紹介文 (任意)</Label>
               <Textarea
                 id="note"
                 value={form.note}
                 onChange={(e) => setForm({ ...form, note: e.target.value })}
-                rows={3}
-                placeholder="土づくりからこだわった、葉物野菜の名手。"
+                rows={2}
+                placeholder="その他の補足や、内部用のメモなど。"
                 className="mt-1.5 rounded-none"
               />
             </div>

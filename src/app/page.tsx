@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Truck, ShieldCheck, BadgeJapaneseYen, MapPin, Newspaper } from "lucide-react";
+import { ArrowUpRight, Truck, ShieldCheck, BadgeJapaneseYen, MapPin, Newspaper, Phone, Mail } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Footer } from "@/components/site/Footer";
@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { useReveal } from "@/hooks/use-reveal";
 import { useNews, useProducers } from "@/hooks/use-content";
 import vegetables from "@/assets/vegetables.jpg";
+import qualityCheck from "@/assets/quality-check.jpg";
 import producer1 from "@/assets/producer-1.jpg";
 import producer2 from "@/assets/producer-2.jpg";
 import producer3 from "@/assets/producer-3.jpg";
@@ -253,29 +254,61 @@ export default function Home() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 md:py-28 bg-gradient-editorial text-primary-foreground relative overflow-hidden">
-          <div className="absolute inset-0 wa-asanoha-light pointer-events-none" />
+        <section className="py-20 md:py-28 bg-foreground text-primary-foreground relative overflow-hidden">
+          {/* Company-related background: on-site quality-check photo. */}
+          <img
+            src={qualityCheck.src}
+            alt=""
+            aria-hidden
+            className="absolute inset-0 w-full h-full object-cover opacity-35"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-foreground/85 via-foreground/70 to-foreground/55 pointer-events-none" />
+          <div className="absolute inset-0 wa-asanoha-light opacity-60 pointer-events-none" />
           <div className="blob bg-sun/25 w-[400px] h-[400px] -bottom-20 -right-20 hidden md:block" />
 
-          <div className="container relative text-center">
-            <div className="inline-flex items-center gap-2 mb-6 text-sun tag-pill bg-primary-foreground/10">
-              <span>Contact</span>
-            </div>
-            <h2 className="font-serif text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight text-balance mb-8">
-              まずは、<br />
-              <span className="italic font-normal text-sun">お気軽に</span>どうぞ。
-            </h2>
-            <p className="text-primary-foreground/80 leading-loose max-w-2xl mx-auto mb-10 text-[15px]">
-              仕入れのご相談、取扱品目のお問い合わせ、供給体制のご相談など。
-              お客様のご要望に合わせた最適なご提案をいたします。
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button asChild size="lg" className="bg-sun text-foreground hover:bg-sun/90 rounded-none h-14 px-7 tracking-wider">
-                <Link href="/contact">お問い合わせフォーム</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground hover:text-foreground rounded-none h-14 px-7 tracking-wider">
-                <a href="tel:03-5432-8761">03-5432-8761</a>
-              </Button>
+          <div className="container relative">
+            <div className="max-w-3xl mx-auto text-center">
+              <div className="inline-flex items-center gap-2 mb-5 text-sun tag-pill bg-primary-foreground/10">
+                <span>Contact</span>
+              </div>
+              <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-balance mb-6">
+                まずは、<br />
+                <span className="italic font-normal text-sun">お気軽に</span>どうぞ。
+              </h2>
+              <p className="text-primary-foreground/80 leading-loose mb-10 text-[15px] max-w-2xl mx-auto">
+                仕入れのご相談、取扱品目のお問い合わせ、供給体制のご相談など。
+                お客様のご要望に合わせた最適なご提案をいたします。
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-sun text-foreground hover:bg-sun/90 rounded-none h-14 px-6 tracking-[0.15em] uppercase text-xs font-medium"
+                >
+                  <Link href="/contact" className="inline-flex items-center justify-center gap-2">
+                    <Mail className="h-4 w-4" />
+                    お問い合わせフォーム
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-green-600 text-white hover:bg-green-700 rounded-none h-14 px-6 tracking-[0.05em] text-xs font-medium"
+                >
+                  <a href="tel:048-228-6770" className="inline-flex items-center justify-center gap-2">
+                    <Phone className="h-4 w-4 fill-white" />
+                    <span className="text-lg md:text-xl font-semibold tracking-wider font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif]">
+                      048-228-6770
+                    </span>
+                  </a>
+                </Button>
+              </div>
+
+              <p className="mt-5 text-[11px] tracking-[0.2em] uppercase text-primary-foreground/50">
+                Weekdays 9:00 – 17:00
+              </p>
             </div>
           </div>
         </section>

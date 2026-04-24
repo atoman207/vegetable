@@ -11,13 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useReveal } from "@/hooks/use-reveal";
 
-const inquiryTypes = [
-  "仕入れ相談",
-  "取扱品目相談",
-  "供給体制の相談",
-  "加工サービスの相談",
-  "その他",
-];
+const inquiryTypes = ["お問い合わせ", "お見積もり依頼", "取引について", "その他"];
 
 export default function ContactPage() {
   const ref = useReveal<HTMLDivElement>();
@@ -40,6 +34,8 @@ export default function ContactPage() {
           tailJa="どうぞ。"
           description="仕入れのご相談、取扱品目のお問い合わせ、供給体制のご相談など。お客様のご要望に合わせた最適なご提案をいたします。"
           breadcrumb={[{ label: "お問い合わせ" }]}
+          backgroundImage="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1920&q=80"
+          backgroundAlt="お問い合わせを象徴するコミュニケーションの写真"
         />
 
         <section ref={ref} className="py-16 md:py-24 bg-background relative overflow-hidden">
@@ -54,16 +50,16 @@ export default function ContactPage() {
                 </h2>
 
                 <a
-                  href="tel:03-5432-8761"
-                  className="group flex items-start gap-3 p-5 border-t-2 border-sun bg-secondary/60 hover:bg-secondary transition-smooth mb-4"
+                  href="tel:048-228-6770"
+                  className="group flex items-start gap-4 p-8 border-t-2 border-sun bg-green-600 hover:bg-green-700 text-white transition-smooth mb-4"
                 >
-                  <Phone className="h-5 w-5 mt-1 text-primary" />
+                  <Phone className="h-10 w-10 mt-1 text-white fill-white" />
                   <div>
-                    <div className="text-[10px] tracking-[0.3em] uppercase text-primary mb-1">Phone</div>
-                    <div className="font-serif text-2xl font-bold text-foreground tabular-nums group-hover:text-primary transition-smooth">
-                      03-5432-8761
+                    <div className="text-xs tracking-[0.3em] uppercase text-white/90 mb-1">Phone</div>
+                    <div className="text-5xl font-bold text-white transition-smooth font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif]">
+                      048-228-6770
                     </div>
-                    <div className="text-xs text-muted-foreground mt-1">Mon–Fri · 9:00–18:00</div>
+                    <div className="text-base text-white/90 mt-2">Mon–Fri · 9:00–18:00</div>
                   </div>
                 </a>
 
@@ -106,65 +102,13 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={onSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <Label htmlFor="company" className="text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
-                          会社名 <span className="text-destructive">*</span>
-                        </Label>
-                        <Input
-                          id="company"
-                          name="company"
-                          required
-                          className="mt-2 rounded-none h-12 border-border focus-visible:ring-primary focus-visible:ring-offset-0"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="name" className="text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
-                          ご担当者名 <span className="text-destructive">*</span>
-                        </Label>
-                        <Input
-                          id="name"
-                          name="name"
-                          required
-                          className="mt-2 rounded-none h-12 border-border focus-visible:ring-primary focus-visible:ring-offset-0"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <Label htmlFor="email" className="text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
-                          メールアドレス <span className="text-destructive">*</span>
-                        </Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          required
-                          className="mt-2 rounded-none h-12 border-border focus-visible:ring-primary focus-visible:ring-offset-0"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="phone" className="text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
-                          お電話番号
-                        </Label>
-                        <Input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          className="mt-2 rounded-none h-12 border-border focus-visible:ring-primary focus-visible:ring-offset-0"
-                        />
-                      </div>
-                    </div>
-
                     <div>
-                      <Label htmlFor="inquiry" className="text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
-                        お問い合わせ内容 <span className="text-destructive">*</span>
+                      <Label htmlFor="inquiryType" className="text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
+                        問合せ項目
                       </Label>
                       <select
-                        id="inquiry"
-                        name="inquiry"
-                        required
+                        id="inquiryType"
+                        name="inquiryType"
                         defaultValue=""
                         className="mt-2 w-full h-12 px-3 bg-background border border-border focus:border-primary focus:outline-none text-sm"
                       >
@@ -179,16 +123,104 @@ export default function ContactPage() {
                       </select>
                     </div>
 
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <Label htmlFor="company" className="text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
+                          会社名・団体名 <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="company"
+                          name="company"
+                          required
+                          className="mt-2 rounded-none h-12 border-border focus-visible:ring-primary focus-visible:ring-offset-0"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="department" className="text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
+                          部署名
+                        </Label>
+                        <Input
+                          id="department"
+                          name="department"
+                          className="mt-2 rounded-none h-12 border-border focus-visible:ring-primary focus-visible:ring-offset-0"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <Label htmlFor="name" className="text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
+                          お名前またはご担当者名 <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          required
+                          className="mt-2 rounded-none h-12 border-border focus-visible:ring-primary focus-visible:ring-offset-0"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone" className="text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
+                          TEL <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          required
+                          className="mt-2 rounded-none h-12 border-border focus-visible:ring-primary focus-visible:ring-offset-0 font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif]"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <Label htmlFor="fax" className="text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
+                          FAX
+                        </Label>
+                        <Input
+                          id="fax"
+                          name="fax"
+                          type="tel"
+                          className="mt-2 rounded-none h-12 border-border focus-visible:ring-primary focus-visible:ring-offset-0 font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif]"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="email" className="text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
+                          メールアドレス <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          required
+                          className="mt-2 rounded-none h-12 border-border focus-visible:ring-primary focus-visible:ring-offset-0"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="emailConfirm" className="text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
+                        メールアドレス（確認） <span className="text-destructive">*</span>
+                      </Label>
+                      <Input
+                        id="emailConfirm"
+                        name="emailConfirm"
+                        type="email"
+                        required
+                        className="mt-2 rounded-none h-12 border-border focus-visible:ring-primary focus-visible:ring-offset-0"
+                      />
+                    </div>
+
                     <div>
                       <Label htmlFor="message" className="text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
-                        お問い合わせ詳細 <span className="text-destructive">*</span>
+                        お問い合わせ内容
                       </Label>
                       <Textarea
                         id="message"
                         name="message"
-                        required
                         rows={7}
-                        placeholder="品目・数量・納品先地域など、ご相談内容をご記入ください。"
+                        placeholder="お問い合わせ内容をご記入ください。"
                         className="mt-2 rounded-none border-border focus-visible:ring-primary focus-visible:ring-offset-0"
                       />
                     </div>
@@ -209,6 +241,15 @@ export default function ContactPage() {
                       送信する
                       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Button>
+
+                    <div className="space-y-2 pt-2 text-xs text-muted-foreground leading-loose">
+                      <p>お問い合わせの内容すべてには回答できないことがあります。</p>
+                      <p>お問い合わせの内容によっては、回答に時間がかかる場合があります。</p>
+                      <p>お急ぎの方は、お電話でもご質問などお受けしております。お気軽にお問合せください。</p>
+                      <p className="text-foreground font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif]">
+                        会社電話番号：048-228-6770
+                      </p>
+                    </div>
                   </form>
                 )}
               </div>

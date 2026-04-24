@@ -20,7 +20,7 @@ const offices = [
   {
     name: "本社 Head Office",
     address: "〒135-0042 東京都江東区木場 4-12-7 木場ビル6F",
-    tel: "03-5432-8761",
+    tel: "048-228-6770",
     fax: "03-5432-8762",
     access: "東京メトロ東西線「木場」駅 徒歩4分",
     hours: "9:00 – 18:00 (月〜金)",
@@ -28,7 +28,7 @@ const offices = [
   {
     name: "川口センター Kawaguchi Center",
     address: "〒332-0034 埼玉県川口市並木 3-8-15",
-    tel: "048-271-9384",
+    tel: "048-228-6770",
     fax: "048-271-9385",
     access: "JR京浜東北線「西川口」駅 徒歩12分",
     hours: "6:00 – 17:00 (月〜土)",
@@ -50,6 +50,8 @@ export default function AccessPage() {
           tailJa="。"
           description="本社および川口センターの所在地・連絡先をご案内します。会社情報についてはこちらをご覧ください。"
           breadcrumb={[{ label: "会社案内" }]}
+          backgroundImage="https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?auto=format&fit=crop&w=1920&q=80"
+          backgroundAlt="会社案内・アクセスを象徴する街並みの写真"
         />
 
         <section ref={ref} className="py-20 md:py-32 bg-background relative overflow-hidden">
@@ -125,8 +127,8 @@ export default function AccessPage() {
                       <span className="text-foreground/85 leading-relaxed">{o.address}</span>
                     </li>
                     <li className="flex gap-3 items-start">
-                      <Phone className="h-4 w-4 mt-1 text-primary shrink-0" />
-                      <span className="text-foreground/85">
+                      <Phone className="h-7 w-7 mt-1 text-green-600 fill-green-600 shrink-0" />
+                      <span className="text-foreground/85 text-lg font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif]">
                         TEL: <a href={`tel:${o.tel}`} className="hover:text-primary transition-smooth">{o.tel}</a>
                         <span className="text-muted-foreground"> / FAX: {o.fax}</span>
                       </span>

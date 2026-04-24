@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Providers } from "./providers";
 import "./globals.css";
 import pubicon from "@/assets/pubicon.png";
+import { TopButton } from "@/components/site/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "W・H株式会社 | 産直流通とカット野菜で日本の農業を支える",
@@ -42,7 +43,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="font-sans antialiased">
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <TopButton />
+        </Providers>
       </body>
     </html>
   );

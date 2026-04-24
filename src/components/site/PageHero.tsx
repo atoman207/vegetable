@@ -9,6 +9,13 @@ type PageHeroProps = {
   tailJa?: string;
   description?: string;
   breadcrumb?: { label: string; to?: string }[];
+  /**
+   * Optional symbolic image rendered behind the green gradient. Keeps the
+   * hero's signature green look while hinting at the page's subject matter
+   * (producer fields, warehouse shelves, newspapers, etc).
+   */
+  backgroundImage?: string;
+  backgroundAlt?: string;
 };
 
 export const PageHero = ({
@@ -19,10 +26,35 @@ export const PageHero = ({
   tailJa = "",
   description,
   breadcrumb,
+  backgroundImage,
+  backgroundAlt = "",
 }: PageHeroProps) => {
+  const hasImage = Boolean(backgroundImage);
+
   return (
-    <section className="relative pt-28 md:pt-36 pb-16 md:pb-24 bg-gradient-editorial text-primary-foreground overflow-hidden grain">
-      <div className="absolute inset-0 wa-seigaiha-light pointer-events-none" />
+    <section
+      className={
+        "relative pt-28 md:pt-36 pb-16 md:pb-24 text-primary-foreground overflow-hidden " +
+        // When a symbolic image is provided, show it in full and skip the
+        // solid green background + seigaiha pattern so the photo reads
+        // clearly. Keep only a soft left-side scrim for text contrast.
+        (hasImage ? "bg-foreground" : "bg-gradient-editorial grain")
+      }
+    >
+      {hasImage && (
+        <>
+          <img
+            src={backgroundImage}
+            alt={backgroundAlt}
+            aria-hidden={backgroundAlt === "" ? true : undefined}
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+          />
+          {/* Soft darkening only where the text sits (left → center fade). */}
+          <div className="absolute inset-0 bg-gradient-to-r from-foreground/75 via-foreground/30 to-transparent pointer-events-none" />
+        </>
+      )}
+      {!hasImage && <div className="absolute inset-0 wa-seigaiha-light pointer-events-none" />}
       <div className="blob bg-sun/25 w-[400px] h-[400px] -top-20 -right-20 hidden md:block" />
       <div className="blob bg-primary-glow/20 w-[300px] h-[300px] bottom-0 left-[15%] hidden md:block" style={{ animationDelay: "3s" }} />
 

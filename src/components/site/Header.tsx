@@ -12,9 +12,9 @@ const navItems = [
   { label: "ホーム", to: "/" },
   { label: "会社概要", to: "/about" },
   { label: "業務内容", to: "/services" },
-  { label: "生産者紹介", to: "/producers" },
-  { label: "会社案内", to: "/access" },
-  { label: "ニュース", to: "/news" },
+  { label: "農場紹介", to: "/producers" },
+  { label: "採用情報", to: "/careers" },
+  { label: "お知らせ", to: "/news" },
 ];
 
 export const Header = () => {
@@ -74,18 +74,18 @@ export const Header = () => {
 
           <div className="flex items-center gap-3 md:gap-4">
             <a
-              href="tel:03-5432-8761"
-              className="hidden md:flex items-center gap-2 text-sm tracking-wider text-foreground/75 hover:text-primary transition-smooth"
+              href="tel:048-228-6770"
+              className="hidden md:flex items-center gap-3 rounded-full bg-green-600 px-6 h-14 text-white hover:bg-green-700 transition-smooth"
             >
-              <Phone className="h-4 w-4" />
-              <span className="font-medium tabular-nums">03-5432-8761</span>
+              <Phone className="h-7 w-7 text-white fill-white" />
+              <span className="text-2xl leading-none font-medium font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif]">048-228-6770</span>
             </a>
             <Button
               asChild
               size="sm"
-              className="hidden sm:inline-flex rounded-none font-medium text-sm tracking-[0.12em] uppercase h-11 px-6 bg-foreground text-primary-foreground hover:bg-primary transition-smooth"
+              className="hidden sm:inline-flex rounded-none font-medium text-sm tracking-[0.12em] h-11 px-6 bg-white text-primary border border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
             >
-              <Link href="/contact">Contact</Link>
+              <Link href="/contact">お問い合わせ</Link>
             </Button>
             <button
               onClick={() => setOpen(!open)}
@@ -164,11 +164,11 @@ export const Header = () => {
               <Link href="/contact">お問い合わせ</Link>
             </Button>
             <a
-              href="tel:03-5432-8761"
-              className="flex items-center gap-2 text-primary-foreground/80 text-base tracking-wider"
+              href="tel:048-228-6770"
+              className="flex items-center gap-3 bg-green-600 text-white hover:bg-green-700 rounded-full px-5 h-14 self-start"
             >
-              <Phone className="h-4 w-4 text-sun" />
-              <span className="tabular-nums">03-5432-8761</span>
+              <Phone className="h-7 w-7 text-white fill-white" />
+              <span className="text-2xl leading-none font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif]">048-228-6770</span>
             </a>
           </div>
         </nav>

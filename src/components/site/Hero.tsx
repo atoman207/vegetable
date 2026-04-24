@@ -88,13 +88,9 @@ export const Hero = () => {
           </div>
 
           <h1 className="font-serif text-[2.75rem] sm:text-6xl md:text-8xl lg:text-[8.5rem] font-bold leading-[0.95] text-balance mb-8 md:mb-10 tracking-tight">
-            日本の農業に、
+            私たちは日本の農業を
             <br />
-            <span className="italic font-normal text-sun relative inline-block">
-              愛
-              <span className="absolute -bottom-1 left-0 right-0 h-[6px] md:h-[10px] bg-sun/30 -z-10" />
-            </span>
-            を込めて。
+            応援します
           </h1>
 
           <div className="grid md:grid-cols-[1fr_auto] gap-6 md:gap-12 items-end max-w-4xl">
@@ -122,7 +118,7 @@ export const Hero = () => {
                 className="bg-transparent backdrop-blur-sm border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-none font-medium text-sm h-14 px-7 tracking-wider"
               >
                 <Link href="/contact">
-                  <Phone className="mr-2 h-4 w-4" />
+                  <Phone className="mr-2 h-4 w-4 text-green-500" />
                   CONTACT
                 </Link>
               </Button>
