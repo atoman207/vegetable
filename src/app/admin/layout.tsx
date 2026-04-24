@@ -3,7 +3,7 @@
 import { useState, type ReactNode } from "react";
 import Link from "next/link";
 import { useRouter, useSelectedLayoutSegment, usePathname } from "next/navigation";
-import { LayoutDashboard, Users, Newspaper, LogOut, Menu, X, ExternalLink } from "lucide-react";
+import { LayoutDashboard, Users, Newspaper, LogOut, Menu, X, ExternalLink, MapPin, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { signOut, useIsAdmin, useSession } from "@/hooks/use-auth";
@@ -11,7 +11,9 @@ import { useEffect } from "react";
 
 const sidebarItems = [
   { to: "/admin", label: "ダッシュボード", en: "Dashboard", icon: LayoutDashboard, exact: true },
+  { to: "/admin/regions", label: "地域ネットワーク", en: "Regions", icon: MapPin, exact: false },
   { to: "/admin/producers", label: "生産者", en: "Producers", icon: Users, exact: false },
+  { to: "/admin/products", label: "取扱品目", en: "Products", icon: Package, exact: false },
   { to: "/admin/news", label: "ニュース", en: "News", icon: Newspaper, exact: false },
 ];
 

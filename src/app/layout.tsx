@@ -1,12 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import { Providers } from "./providers";
 import "./globals.css";
+import pubicon from "@/assets/pubicon.png";
 
 export const metadata: Metadata = {
   title: "W・H株式会社 | 産直流通とカット野菜で日本の農業を支える",
   description:
     "全国の生産者ネットワークを活かし、産直流通とカット野菜で安定供給を実現。品質・価格・供給力に強い、法人向け青果流通のW・H株式会社。",
   authors: [{ name: "W・H株式会社" }],
+  icons: {
+    icon: pubicon.src,
+  },
   openGraph: {
     type: "website",
     title: "W・H株式会社 | 産直流通とカット野菜で日本の農業を支える",
