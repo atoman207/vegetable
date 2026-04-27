@@ -25,3 +25,12 @@ next-env.d.ts
 *.njsproj
 *.sln
 *.sw?
+
+# Editor temp/backup artifacts (Cursor/VSCode-style: foo.ts.tmp.<pid>.<ms>)
+*.tmp.*
+
+# Build artifacts
+tsconfig.tsbuildinfo
+
+# Tooling
+.claude/scheduled_tasks.lock

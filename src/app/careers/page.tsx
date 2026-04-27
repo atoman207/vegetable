@@ -61,8 +61,8 @@ export default function CareersPage() {
           tailJa="を募集しています。"
           description="産地と食卓をつなぐ現場で、地域と農業の未来を一緒につくりませんか。営業・品質・物流の各ポジションで採用を行っています。"
           breadcrumb={[{ label: "採用情報" }]}
-          backgroundImage="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1920&q=80"
-          backgroundAlt="チームで働くW・Hのスタッフ"
+          backgroundImage="https://images.unsplash.com/photo-1708774150152-dce9d5ab82d4?auto=format&fit=crop&w=1920&q=80"
+          backgroundAlt="ハウスで野菜を収穫する農業スタッフ"
         />
 
         <section className="py-16 md:py-24 bg-background relative overflow-hidden">
@@ -176,15 +176,15 @@ export default function CareersPage() {
             <p className="text-primary-foreground/80 leading-loose max-w-2xl mx-auto mb-8">
               ご応募前のご質問も歓迎しています。仕事内容や働き方について、気になる点があればお気軽にご相談ください。
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button asChild size="lg" className="bg-sun text-foreground hover:bg-sun/90 rounded-none h-14 px-7 tracking-wider">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center max-w-xl sm:max-w-none mx-auto">
+              <Button asChild size="lg" className="bg-sun text-foreground hover:bg-sun/90 rounded-none h-14 px-6 sm:px-7 tracking-wider w-full sm:w-auto">
                 <Link href="/contact">
                   お問い合わせフォームへ
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" className="bg-green-600 text-white hover:bg-green-700 rounded-none h-20 px-10 tracking-wider">
-                <a href="tel:048-228-6770" className="text-3xl leading-none font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif]">
+              <Button asChild size="lg" className="bg-green-600 text-white hover:bg-green-700 rounded-none h-14 sm:h-16 px-6 sm:px-10 tracking-wider w-full sm:w-auto">
+                <a href="tel:048-228-6770" className="text-xl sm:text-2xl md:text-3xl leading-none font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif] whitespace-nowrap">
                   048-228-6770
                 </a>
               </Button>

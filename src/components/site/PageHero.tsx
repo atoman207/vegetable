@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { FruitBackdrop } from "@/components/site/FruitBackdrop";
 
 type PageHeroProps = {
   number: string;
@@ -49,6 +52,13 @@ export const PageHero = ({
             aria-hidden={backgroundAlt === "" ? true : undefined}
             className="absolute inset-0 w-full h-full object-cover"
             loading="lazy"
+            onError={(e) => {
+              // If the symbolic photo fails (network, CDN, etc.), fall back to
+              // the green editorial gradient so the hero never renders a blank box.
+              const t = e.currentTarget;
+              t.style.display = "none";
+              t.parentElement?.classList.add("bg-gradient-editorial", "grain");
+            }}
           />
           {/* Soft darkening only where the text sits (left → center fade). */}
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/75 via-foreground/30 to-transparent pointer-events-none" />
@@ -57,6 +67,8 @@ export const PageHero = ({
       {!hasImage && <div className="absolute inset-0 wa-seigaiha-light pointer-events-none" />}
       <div className="blob bg-sun/25 w-[400px] h-[400px] -top-20 -right-20 hidden md:block" />
       <div className="blob bg-primary-glow/20 w-[300px] h-[300px] bottom-0 left-[15%] hidden md:block" style={{ animationDelay: "3s" }} />
+      {/* Subtle floating fruit decoration on every page hero — keeps a consistent fruit theme. */}
+      <FruitBackdrop density="sparse" className="opacity-40 mix-blend-screen" />
 
       <div className="container relative">
         <div className="flex items-center gap-2 text-[10px] md:text-xs tracking-[0.25em] uppercase text-primary-foreground/60 mb-8 md:mb-12">

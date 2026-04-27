@@ -1,25 +1,33 @@
 "use client";
 
-import { Truck, ShieldCheck, BadgeJapaneseYen } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 
 const items = [
   {
-    icon: Truck,
+    image:
+      "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=400&q=80",
+    fallbackEmoji: "🍐",
+    imageAlt: "和梨 (Nashi pear)",
     title: "安定供給",
     en: "Stable Supply",
     desc: "全国の協力農場との連携により、年間を通じた安定的な供給体制を構築しています。",
     accent: "bg-sun",
   },
   {
-    icon: ShieldCheck,
+    image:
+      "https://images.unsplash.com/photo-1595124210737-c41fb4585da7?auto=format&fit=crop&w=400&q=80",
+    fallbackEmoji: "🍑",
+    imageAlt: "桃 (Peach)",
     title: "品質管理",
     en: "Quality Control",
     desc: "入荷時の品質確認、栽培履歴書の提出対応など、安心・安全への取り組みを徹底しています。",
     accent: "bg-leaf",
   },
   {
-    icon: BadgeJapaneseYen,
+    image:
+      "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=400&q=80",
+    fallbackEmoji: "🍊",
+    imageAlt: "みかん (Mikan)",
     title: "適正価格",
     en: "Fair Pricing",
     desc: "中間流通コストを抑え、お客様の予算とニーズに応じた最適なご提案が可能です。",
@@ -37,6 +45,7 @@ export const Strengths = () => {
       className="py-20 md:py-36 bg-secondary relative overflow-hidden"
     >
       <div className="absolute inset-0 wa-shippou opacity-60 pointer-events-none" />
+      <div className="absolute inset-0 wa-fruit-pattern opacity-30 pointer-events-none" />
       <div className="blob bg-sun/20 w-[320px] h-[320px] -top-10 right-[10%] hidden md:block" />
       <div className="blob bg-matcha/20 w-[280px] h-[280px] bottom-10 -left-10 hidden md:block" style={{ animationDelay: "3s" }} />
 
@@ -66,20 +75,36 @@ export const Strengths = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-4 md:gap-0 md:border-t border-border">
-          {items.map(({ icon: Icon, title, en, desc, accent }, i) => (
+          {items.map(({ image, imageAlt, fallbackEmoji, title, en, desc, accent }, i) => (
             <div
               key={title}
               className="group relative bg-background md:bg-transparent py-10 md:py-14 px-6 md:px-8 md:border-b-0 md:border-r border-border last:border-r-0 hover:bg-background transition-smooth shadow-soft md:shadow-none reveal"
               style={{ transitionDelay: `${(i + 1) * 120}ms` }}
             >
-              <div className="flex items-baseline justify-between mb-6 md:mb-8">
+              <div className="flex items-center justify-between mb-6 md:mb-8">
                 <span className="font-serif text-xs italic text-primary/60">— 0{i + 1}</span>
                 <div className="relative">
-                  <div className={`absolute inset-0 ${accent} rounded-full blur-md opacity-40 scale-125 group-hover:scale-150 transition-transform`} />
-                  <Icon
-                    className="relative h-8 w-8 md:h-10 md:w-10 text-primary/80 group-hover:text-primary group-hover:rotate-6 transition-smooth"
-                    strokeWidth={1.5}
-                  />
+                  <div className={`absolute inset-0 ${accent} rounded-full blur-xl opacity-50 scale-125 group-hover:scale-150 transition-transform`} />
+                  <div className="relative h-16 w-16 md:h-20 md:w-20 rounded-full overflow-hidden shadow-card ring-2 ring-background bg-secondary group-hover:rotate-6 transition-smooth">
+                    <img
+                      src={image}
+                      alt={imageAlt}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover"
+                      onError={(e) => {
+                        const t = e.currentTarget;
+                        t.style.display = "none";
+                        const sib = t.nextElementSibling as HTMLElement | null;
+                        if (sib) sib.style.display = "flex";
+                      }}
+                    />
+                    <span
+                      className="absolute inset-0 hidden items-center justify-center text-3xl md:text-4xl"
+                      aria-hidden
+                    >
+                      {fallbackEmoji}
+                    </span>
+                  </div>
                 </div>
               </div>
               <div className="text-[10px] tracking-[0.35em] text-primary uppercase mb-3 font-medium">{en}</div>

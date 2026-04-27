@@ -246,7 +246,8 @@ const ProducerCard = ({ producer: p, index }: { producer: Producer; index: numbe
             src={mainImg}
             alt={`${p.name}さんの農家写真`}
             loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-cover transition-transform group-hover:scale-105"
+            style={{ transitionDuration: "1200ms" }}
           />
           <div className="absolute top-0 left-0 p-3 md:p-4 flex items-center gap-2 bg-foreground/70 text-primary-foreground">
             <span className="font-serif text-xs italic">— {p.num}</span>

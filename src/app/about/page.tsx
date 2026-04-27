@@ -192,13 +192,29 @@ export default function AboutPage() {
         <section className="relative bg-background">
           <div className="container">
             <div className="max-w-5xl mx-auto">
-              <figure className="relative overflow-hidden bg-secondary/30">
+              <figure className="relative overflow-hidden bg-secondary/30 min-h-[200px]">
                 <img
                   src="https://t-agrifoods.com/wp-content/themes/agrifoods/images/company.jpg"
                   alt="株式会社W・Hの社屋・物流拠点"
                   loading="lazy"
                   className="w-full h-auto object-cover"
+                  onError={(e) => {
+                    const t = e.currentTarget;
+                    t.style.display = "none";
+                    const sib = t.nextElementSibling as HTMLElement | null;
+                    if (sib) sib.style.display = "flex";
+                  }}
                 />
+                <div
+                  className="hidden w-full aspect-[16/9] items-center justify-center bg-gradient-editorial text-primary-foreground"
+                  aria-hidden
+                >
+                  <div className="text-center px-6">
+                    <div className="text-[10px] tracking-[0.3em] uppercase text-sun mb-2">Head Office</div>
+                    <div className="font-serif text-2xl md:text-4xl font-bold">埼玉県 越谷</div>
+                    <div className="text-sm text-primary-foreground/70 mt-2">Distribution Center</div>
+                  </div>
+                </div>
                 <figcaption className="absolute bottom-0 left-0 right-0 px-5 py-3 md:px-7 md:py-4 bg-foreground/70 text-primary-foreground text-[11px] md:text-xs tracking-[0.25em] uppercase backdrop-blur-sm flex items-center gap-3">
                   <span className="h-px w-6 bg-sun" />
                   埼玉 越谷 ― Head Office &amp; Distribution Center

@@ -39,16 +39,16 @@ export const Header = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border/60 shadow-soft transition-smooth">
-        <div className="flex h-20 md:h-24 items-center justify-between px-[5vw]">
-          <Link href="/" className="group">
+        <div className="flex h-16 sm:h-20 md:h-24 items-center justify-between px-4 sm:px-[5vw] gap-3">
+          <Link href="/" className="group shrink-0">
             <img
               src={logoImage.src}
               alt="W・H株式会社 ロゴ"
-              className="h-11 md:h-14 w-auto"
+              className="h-9 sm:h-11 md:h-14 w-auto"
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
+          <nav className="hidden lg:flex items-center gap-7 xl:gap-10">
             {navItems.map((item) => {
               const active = pathname === item.to;
               return (
@@ -72,21 +72,28 @@ export const Header = () => {
             })}
           </nav>
 
-          <div className="flex items-center gap-3 md:gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <a
               href="tel:048-228-6770"
-              className="hidden md:flex items-center gap-3 rounded-full bg-green-600 px-6 h-14 text-white hover:bg-green-700 transition-smooth"
+              className="hidden md:flex items-center gap-2 lg:gap-3 rounded-full bg-green-600 px-4 lg:px-6 h-12 lg:h-14 text-white hover:bg-green-700 transition-smooth"
             >
-              <Phone className="h-7 w-7 text-white fill-white" />
-              <span className="text-2xl leading-none font-medium font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif]">048-228-6770</span>
+              <Phone className="h-5 w-5 lg:h-7 lg:w-7 text-white fill-white" />
+              <span className="text-base lg:text-2xl leading-none font-medium font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif] whitespace-nowrap">048-228-6770</span>
             </a>
             <Button
               asChild
               size="sm"
-              className="hidden sm:inline-flex rounded-none font-medium text-sm tracking-[0.12em] h-11 px-6 bg-white text-primary border border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              className="hidden md:inline-flex rounded-none font-medium text-sm tracking-[0.12em] h-11 px-5 lg:px-6 bg-white text-primary border border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
             >
               <Link href="/contact">お問い合わせ</Link>
             </Button>
+            <a
+              href="tel:048-228-6770"
+              className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-full bg-green-600 text-white hover:bg-green-700 transition-smooth"
+              aria-label="お電話"
+            >
+              <Phone className="h-5 w-5 fill-white" />
+            </a>
             <button
               onClick={() => setOpen(!open)}
               className={cn(

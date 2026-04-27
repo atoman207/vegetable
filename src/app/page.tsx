@@ -5,6 +5,8 @@ import { ArrowUpRight, Truck, ShieldCheck, BadgeJapaneseYen, MapPin, Newspaper, 
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Footer } from "@/components/site/Footer";
+import { FruitGallery } from "@/components/site/FruitGallery";
+import { FruitBackdrop } from "@/components/site/FruitBackdrop";
 import { Button } from "@/components/ui/button";
 import { useReveal } from "@/hooks/use-reveal";
 import { useNews, useProducers } from "@/hooks/use-content";
@@ -46,6 +48,7 @@ export default function Home() {
         <section className="py-20 md:py-32 bg-background relative overflow-hidden">
           <div className="absolute top-0 right-0 w-40 md:w-72 h-64 wa-asanoha opacity-40 pointer-events-none hidden md:block" />
           <div className="blob bg-matcha/20 w-[300px] h-[300px] top-1/3 -left-20 hidden md:block" />
+          <FruitBackdrop density="sparse" className="opacity-40" />
 
           <div className="container relative">
             <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
@@ -142,6 +145,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Japanese fruit gallery */}
+        <FruitGallery />
 
         {/* Producers preview */}
         <section className="py-20 md:py-32 bg-background relative overflow-hidden">
@@ -281,11 +287,11 @@ export default function Home() {
                 お客様のご要望に合わせた最適なご提案をいたします。
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center max-w-xl sm:max-w-none mx-auto">
                 <Button
                   asChild
                   size="lg"
-                  className="bg-sun text-foreground hover:bg-sun/90 rounded-none h-14 px-6 tracking-[0.15em] uppercase text-xs font-medium"
+                  className="bg-sun text-foreground hover:bg-sun/90 rounded-none h-14 px-6 tracking-[0.15em] uppercase text-xs font-medium w-full sm:w-auto"
                 >
                   <Link href="/contact" className="inline-flex items-center justify-center gap-2">
                     <Mail className="h-4 w-4" />
@@ -295,11 +301,11 @@ export default function Home() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-green-600 text-white hover:bg-green-700 rounded-none h-14 px-6 tracking-[0.05em] text-xs font-medium"
+                  className="bg-green-600 text-white hover:bg-green-700 rounded-none h-14 px-5 sm:px-6 tracking-[0.05em] text-xs font-medium w-full sm:w-auto"
                 >
-                  <a href="tel:048-228-6770" className="inline-flex items-center justify-center gap-2">
+                  <a href="tel:048-228-6770" className="inline-flex items-center justify-center gap-2 whitespace-nowrap">
                     <Phone className="h-4 w-4 fill-white" />
-                    <span className="text-lg md:text-xl font-semibold tracking-wider font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif]">
+                    <span className="text-base sm:text-lg md:text-xl font-semibold tracking-wider font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif]">
                       048-228-6770
                     </span>
                   </a>

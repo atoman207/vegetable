@@ -35,8 +35,8 @@ export default function NewsPage() {
           tailJa="。"
           description="出荷情報・会社情報・生産者便りなど、W・H株式会社からの最新の情報をお届けします。"
           breadcrumb={[{ label: "ニュース" }]}
-          backgroundImage="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1920&q=80"
-          backgroundAlt="新聞とお知らせを象徴するビジュアル"
+          backgroundImage="https://images.unsplash.com/photo-1759003103614-11427d946af0?auto=format&fit=crop&w=1920&q=80"
+          backgroundAlt="色鮮やかな青果市場に並ぶ野菜"
         />
 
         <section ref={ref} className="py-16 md:py-24 bg-background relative overflow-hidden">

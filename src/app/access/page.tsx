@@ -126,9 +126,9 @@ export default function AccessPage() {
                       <MapPin className="h-4 w-4 mt-1 text-primary shrink-0" />
                       <span className="text-foreground/85 leading-relaxed">{o.address}</span>
                     </li>
-                    <li className="flex gap-3 items-start">
-                      <Phone className="h-7 w-7 mt-1 text-green-600 fill-green-600 shrink-0" />
-                      <span className="text-foreground/85 text-lg font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif]">
+                    <li className="flex gap-3 items-start flex-wrap">
+                      <Phone className="h-5 w-5 sm:h-6 sm:w-6 mt-1 text-green-600 fill-green-600 shrink-0" />
+                      <span className="text-foreground/85 text-base sm:text-lg font-['Hiragino_Kaku_Gothic_ProN','Yu_Gothic','Meiryo',sans-serif] break-words">
                         TEL: <a href={`tel:${o.tel}`} className="hover:text-primary transition-smooth">{o.tel}</a>
                         <span className="text-muted-foreground"> / FAX: {o.fax}</span>
                       </span>

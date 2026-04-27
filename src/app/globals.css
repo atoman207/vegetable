@@ -231,6 +231,24 @@
     background-repeat: repeat;
   }
 
+  /* 和フルーツパターン — Japanese fruit motif background
+     (Apple, Cherry, Persimmon, Mikan, Pear, Peach, Grape, Strawberry) */
+  .wa-fruit-pattern {
+    background-color: transparent;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'><g opacity='0.55'><circle cx='40' cy='40' r='14' fill='%23dc2626'/><path d='M40 26 q-2 -6 -6 -7' stroke='%2316a34a' stroke-width='2' fill='none'/><circle cx='130' cy='80' r='12' fill='%23f97316'/><path d='M126 70 l3 -4 l3 4' stroke='%2316a34a' stroke-width='2' fill='none'/><circle cx='220' cy='50' r='13' fill='%23ec4899'/><path d='M220 38 q-1 -4 -5 -5' stroke='%2316a34a' stroke-width='2' fill='none'/><ellipse cx='280' cy='130' rx='10' ry='13' fill='%23facc15'/><ellipse cx='60' cy='180' rx='12' ry='15' fill='%23eab308'/><circle cx='180' cy='200' r='13' fill='%23dc2626'/><circle cx='270' cy='250' r='12' fill='%23f59e0b'/><circle cx='100' cy='260' r='14' fill='%23a855f7'/><circle cx='30' cy='280' r='12' fill='%23dc2626'/><circle cx='220' cy='290' r='11' fill='%23f97316'/></g></svg>");
+    background-size: 320px 320px;
+    background-repeat: repeat;
+    background-position: center;
+  }
+
+  /* Soft fruit accent — single large piece for hero/CTA decoration */
+  .wa-fruit-accent {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><g opacity='0.18'><circle cx='100' cy='110' r='60' fill='%23f59e0b'/><path d='M100 50 q-8 -25 -28 -28' stroke='%2316a34a' stroke-width='4' fill='none'/><ellipse cx='80' cy='52' rx='14' ry='8' fill='%2316a34a' transform='rotate(-30 80 52)'/></g></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
   /* 市松 — Ichimatsu (checkerboard) */
   .wa-ichimatsu {
     background-image:
@@ -432,4 +450,41 @@
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes fruit-bob {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-14px) rotate(4deg); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@layer utilities {
+  .fruit-bob { animation: fruit-bob 7s ease-in-out infinite; }
+  .pulse-soft { animation: pulse-soft 4s ease-in-out infinite; }
+  .gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 12s ease infinite;
+  }
+
+  /* Hover lift card */
+  .lift-card {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .lift-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px -25px hsl(145 55% 20% / 0.30);
+  }
+
+  /* Hide scrollbar utility for horizontal scrollers on mobile */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 }

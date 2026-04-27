@@ -27,6 +27,7 @@ import {
 import { toast } from "@/components/ui/sonner";
 import { useProducers, useUpsertProducer, useDeleteProducer } from "@/hooks/use-content";
 import type { Producer } from "@/lib/database.types";
+import { MediaUrlInput } from "@/components/admin/MediaPicker";
 
 type FormState = {
   id?: string;
@@ -350,15 +351,17 @@ export default function AdminProducersPage() {
             </div>
 
             <div>
-              <Label htmlFor="image_url">農家写真 URL (メイン)</Label>
-              <Input
-                id="image_url"
-                value={form.image_url}
-                onChange={(e) => setForm({ ...form, image_url: e.target.value })}
-                placeholder="https://…/producer-main.jpg"
-                className="mt-1.5 rounded-none"
-              />
+              <Label htmlFor="image_url">農家写真 (メイン)</Label>
+              <div className="mt-1.5">
+                <MediaUrlInput
+                  id="image_url"
+                  value={form.image_url}
+                  onChange={(v) => setForm({ ...form, image_url: v })}
+                  folder="producers"
+                />
+              </div>
               <p className="text-[11px] text-muted-foreground mt-1">
+                ライブラリから選択、URL を貼り付け、または「選ぶ / アップロード」ボタンから画像をアップロードできます。
                 未入力の場合はデフォルト画像が使用されます。
               </p>
             </div>
@@ -371,16 +374,17 @@ export default function AdminProducersPage() {
                 const urlKey = `photo${n}_url` as keyof FormState;
                 const capKey = `photo${n}_caption` as keyof FormState;
                 return (
-                  <div key={n} className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3">
+                  <div key={n} className="space-y-2">
                     <div>
-                      <Label htmlFor={`photo${n}_url`}>写真{n} URL</Label>
-                      <Input
-                        id={`photo${n}_url`}
-                        value={form[urlKey] as string}
-                        onChange={(e) => setForm({ ...form, [urlKey]: e.target.value } as FormState)}
-                        placeholder="https://…/photo.jpg"
-                        className="mt-1.5 rounded-none"
-                      />
+                      <Label htmlFor={`photo${n}_url`}>写真{n}</Label>
+                      <div className="mt-1.5">
+                        <MediaUrlInput
+                          id={`photo${n}_url`}
+                          value={form[urlKey] as string}
+                          onChange={(v) => setForm({ ...form, [urlKey]: v } as FormState)}
+                          folder="producers"
+                        />
+                      </div>
                     </div>
                     <div>
                       <Label htmlFor={`photo${n}_caption`}>コメント・説明{n}</Label>

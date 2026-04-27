@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Users, Newspaper, Database, ExternalLink, MapPin, Package } from "lucide-react";
+import { Users, Newspaper, Database, ExternalLink, MapPin, Package, Image as ImageIcon } from "lucide-react";
 import { useNews, useProducers, useProducts, useRegions } from "@/hooks/use-content";
 
 export default function AdminDashboardPage() {
@@ -82,6 +82,26 @@ export default function AdminDashboardPage() {
             {news.length} <span className="text-lg text-muted-foreground font-normal">({published} 公開)</span>
           </div>
           <div className="text-sm text-muted-foreground">ニュース・お知らせの件数</div>
+          <div className="mt-6 h-[2px] w-10 bg-sun group-hover:w-24 transition-all duration-500" />
+        </Link>
+      </div>
+
+      <div className="mt-6">
+        <Link
+          href="/admin/media"
+          className="group block bg-background border border-border p-6 md:p-8 hover:shadow-card transition-smooth"
+        >
+          <div className="flex items-center justify-between mb-4">
+            <ImageIcon className="h-6 w-6 text-primary" strokeWidth={1.5} />
+            <span className="text-[10px] tracking-[0.3em] uppercase text-primary/60 font-medium">Media Library</span>
+          </div>
+          <div className="font-serif text-2xl font-bold tracking-tight mb-2 group-hover:text-primary transition-smooth">
+            画像・フォントを管理する
+          </div>
+          <div className="text-sm text-muted-foreground">
+            Supabase Storage の <code className="text-xs bg-muted px-1">media</code> バケットを CRUD 操作できます。
+            アップロード / URL 取り込み / 名前変更 / 削除に対応。
+          </div>
           <div className="mt-6 h-[2px] w-10 bg-sun group-hover:w-24 transition-all duration-500" />
         </Link>
       </div>

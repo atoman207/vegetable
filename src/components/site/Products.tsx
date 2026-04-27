@@ -4,6 +4,28 @@ import { Carrot } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { useProducts } from "@/hooks/use-content";
 
+const MEDIA_BASE =
+  "https://bglowrscmypoqxkyxgfe.supabase.co/storage/v1/object/public/media/products";
+
+const PRODUCT_IMAGES: Record<string, string> = {
+  "Green Leaf":  `${MEDIA_BASE}/green-leaf.jpg`,
+  "Mizuna":      `${MEDIA_BASE}/mizuna.jpg`,
+  "Mini Tomato": `${MEDIA_BASE}/mini-tomato.jpg`,
+  "Red Radish":  `${MEDIA_BASE}/red-radish.jpg`,
+  "Carrot":      `${MEDIA_BASE}/carrot.jpg`,
+  "Naga-negi":   `${MEDIA_BASE}/naga-negi.jpg`,
+  "Lettuce":     `${MEDIA_BASE}/lettuce.jpg`,
+  "Komatsuna":   `${MEDIA_BASE}/komatsuna.jpg`,
+  "Potato":      `${MEDIA_BASE}/potato.jpg`,
+  "Onion":       `${MEDIA_BASE}/onion.jpg`,
+  "Spinach":     `${MEDIA_BASE}/spinach.jpg`,
+  "Cabbage":     `${MEDIA_BASE}/cabbage.jpg`,
+  "Hakusai":     `${MEDIA_BASE}/hakusai.jpg`,
+  "Broccoli":    `${MEDIA_BASE}/broccoli.jpg`,
+  "Daikon":      `${MEDIA_BASE}/daikon.jpg`,
+  "Cucumber":    `${MEDIA_BASE}/cucumber.jpg`,
+};
+
 export const Products = () => {
   const ref = useReveal<HTMLDivElement>();
   const { data: products = [], isLoading } = useProducts();
@@ -53,27 +75,59 @@ export const Products = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 border-t border-l border-border max-w-6xl mx-auto">
           {isLoading &&
             Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="border-r border-b border-border p-5 md:p-8 h-32 animate-pulse" />
+              <div key={i} className="border-r border-b border-border p-5 md:p-8 animate-pulse">
+                <div className="aspect-square bg-secondary mb-4" />
+                <div className="h-4 bg-secondary mb-2 w-2/3" />
+                <div className="h-3 bg-secondary w-1/2" />
+              </div>
             ))}
-          {products.map((p, i) => (
-            <div
-              key={p.id}
-              className="group border-r border-b border-border p-5 md:p-8 hover:bg-gradient-warm transition-smooth relative cursor-pointer reveal reveal-scale"
-              style={{ transitionDelay: `${(i % 4) * 60}ms` }}
-            >
-              <div className="text-3xl md:text-4xl mb-3 transition-transform group-hover:scale-125 group-hover:-rotate-12 origin-bottom-left">
-                {p.emoji}
+          {products.map((p, i) => {
+            const photo = PRODUCT_IMAGES[p.en];
+            return (
+              <div
+                key={p.id}
+                className="group border-r border-b border-border p-5 md:p-8 hover:bg-gradient-warm transition-smooth relative cursor-pointer reveal reveal-scale"
+                style={{ transitionDelay: `${(i % 4) * 60}ms` }}
+              >
+                <div className="relative mb-4 aspect-square overflow-hidden bg-secondary">
+                  {photo ? (
+                    <>
+                      <img
+                        src={photo}
+                        alt={`${p.ja} (${p.en})`}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        onError={(e) => {
+                          const t = e.currentTarget;
+                          t.style.display = "none";
+                          const sib = t.nextElementSibling as HTMLElement | null;
+                          if (sib) sib.style.display = "flex";
+                        }}
+                      />
+                      <div
+                        className="absolute inset-0 hidden items-center justify-center text-4xl md:text-5xl bg-gradient-to-br from-secondary to-cream/50"
+                        aria-hidden
+                      >
+                        {p.emoji ?? "🥬"}
+                      </div>
+                    </>
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-4xl md:text-5xl bg-gradient-to-br from-secondary to-cream/50">
+                      {p.emoji ?? "🥬"}
+                    </div>
+                  )}
+                </div>
+                <span className="absolute top-2 md:top-3 right-2 md:right-3 font-serif text-[10px] italic text-primary/40">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="font-serif text-lg md:text-xl font-bold text-foreground mb-1 tracking-tight group-hover:text-primary transition-smooth">
+                  {p.ja}
+                </div>
+                <div className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground">{p.en}</div>
+                <div className="h-[2px] w-0 bg-sun mt-3 group-hover:w-12 transition-all duration-500" />
               </div>
-              <span className="absolute top-2 md:top-3 right-2 md:right-3 font-serif text-[10px] italic text-primary/40">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <div className="font-serif text-lg md:text-xl font-bold text-foreground mb-1 tracking-tight group-hover:text-primary transition-smooth">
-                {p.ja}
-              </div>
-              <div className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground">{p.en}</div>
-              <div className="h-[2px] w-0 bg-sun mt-3 group-hover:w-12 transition-all duration-500" />
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <p className="text-center text-xs text-muted-foreground mt-8 md:mt-10 tracking-wider">

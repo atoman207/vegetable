@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, Leaf, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-farm.jpg";
+import { FruitBackdrop } from "@/components/site/FruitBackdrop";
 
 export const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -61,6 +62,9 @@ export const Hero = () => {
         <Sparkles className="h-7 w-7" strokeWidth={1.5} />
       </div>
 
+      {/* Floating Japanese fruit decorations — opacity-tuned so the headline still pops */}
+      <FruitBackdrop density="sparse" className="opacity-50 mix-blend-screen" />
+
       {/* Vertical label — left edge */}
       <div className="absolute left-6 top-1/2 -translate-y-1/2 z-10 hidden lg:flex items-center gap-3 text-primary-foreground/70">
         <span className="writing-vertical text-[10px] tracking-[0.4em] uppercase font-medium">
@@ -87,7 +91,7 @@ export const Hero = () => {
             </span>
           </div>
 
-          <h1 className="font-serif text-[2.75rem] sm:text-6xl md:text-8xl lg:text-[8.5rem] font-bold leading-[0.95] text-balance mb-8 md:mb-10 tracking-tight">
+          <h1 className="font-serif text-[clamp(2rem,9vw,2.75rem)] sm:text-6xl md:text-8xl lg:text-[8.5rem] font-bold leading-[0.95] text-balance mb-8 md:mb-10 tracking-tight">
             私たちは日本の農業を
             <br />
             応援します
