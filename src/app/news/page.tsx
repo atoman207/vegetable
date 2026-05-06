@@ -8,6 +8,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { cn } from "@/lib/utils";
 import { useReveal } from "@/hooks/use-reveal";
 import { useNews } from "@/hooks/use-content";
+import pageHeroNews from "@/assets/page-hero-news.jpg";
 
 type Category = "All" | "Shipping" | "Notice" | "Company" | "Producer";
 
@@ -35,8 +36,8 @@ export default function NewsPage() {
           tailJa="。"
           description="出荷情報・会社情報・生産者便りなど、W・H株式会社からの最新の情報をお届けします。"
           breadcrumb={[{ label: "ニュース" }]}
-          backgroundImage="https://images.unsplash.com/photo-1759003103614-11427d946af0?auto=format&fit=crop&w=1920&q=80"
-          backgroundAlt="色鮮やかな青果市場に並ぶ野菜"
+          backgroundImage={pageHeroNews.src}
+          backgroundAlt="新鮮な野菜原料の入荷"
         />
 
         <section ref={ref} className="py-16 md:py-24 bg-background relative overflow-hidden">

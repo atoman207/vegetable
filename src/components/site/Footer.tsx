@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import logoImage from "@/assets/logo.png";
+import warehouseImage from "@/assets/warehouse.jpg";
 
 const footerMenu = [
   { label: "ホーム", to: "/" },
@@ -15,20 +16,18 @@ const footerMenu = [
 export const Footer = () => {
   return (
     <footer className="relative bg-matcha/15 text-foreground border-t border-matcha/40 overflow-hidden">
-      {/* Subtle fruit motif behind the footer */}
-      <div className="absolute inset-0 wa-fruit-pattern opacity-25 pointer-events-none" aria-hidden />
-      {/* Decorative fruit ribbon */}
+      {/* Wide produce photo band */}
       <div
         aria-hidden
-        className="relative flex items-center justify-center gap-6 sm:gap-10 py-3 text-2xl sm:text-3xl border-b border-matcha/30 bg-secondary/40 select-none"
+        className="relative h-24 sm:h-32 md:h-40 border-b border-matcha/30 overflow-hidden"
       >
-        <span className="opacity-80 fruit-bob" style={{ animationDelay: "0s" }}>🍎</span>
-        <span className="opacity-80 fruit-bob" style={{ animationDelay: "0.4s" }}>🍑</span>
-        <span className="opacity-80 fruit-bob" style={{ animationDelay: "0.8s" }}>🍐</span>
-        <span className="opacity-80 fruit-bob" style={{ animationDelay: "1.2s" }}>🍊</span>
-        <span className="opacity-80 fruit-bob" style={{ animationDelay: "1.6s" }}>🍓</span>
-        <span className="opacity-80 fruit-bob hidden sm:inline" style={{ animationDelay: "2s" }}>🍇</span>
-        <span className="opacity-80 fruit-bob hidden sm:inline" style={{ animationDelay: "2.4s" }}>🍉</span>
+        <img
+          src={warehouseImage.src}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-matcha/15 via-foreground/15 to-transparent" />
       </div>
       <div className="container relative py-12 md:py-16">
         <div className="grid lg:grid-cols-12 gap-10 md:gap-12">

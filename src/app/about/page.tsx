@@ -9,6 +9,11 @@ import { Intro } from "@/components/site/Intro";
 import { Button } from "@/components/ui/button";
 import { useReveal } from "@/hooks/use-reveal";
 import farmerHands from "@/assets/farmer-hands.jpg";
+import pageHeroAbout from "@/assets/page-hero-about.jpg";
+import warehouseImg from "@/assets/warehouse.jpg";
+import aboutGreenhouse from "@/assets/about-greenhouse.jpg";
+import aboutHarvest from "@/assets/about-harvest.jpg";
+import aboutMixed from "@/assets/about-mixed.jpg";
 
 const timeline = [
   { year: "2011", title: "創業", desc: "平成23年12月、安定した野菜供給へのニーズに応えるため創業。" },
@@ -89,8 +94,8 @@ export default function AboutPage() {
           tailJa="をつなぐ。"
           description="私たち株式会社W・Hは、全国の生産者の皆さまと飲食・小売・加工業のお客様をつなぐ、産直流通・カット野菜の専門会社です。"
           breadcrumb={[{ label: "会社概要" }]}
-          backgroundImage="https://t-agrifoods.com/wp-content/themes/agrifoods/images/pageimage01.jpg"
-          backgroundAlt="会社概要ページのメインビジュアル"
+          backgroundImage={pageHeroAbout.src}
+          backgroundAlt="北海道の畑の風景"
         />
 
         <Intro />
@@ -188,33 +193,56 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* ── 産地の風景 photo band ─────────────────── */}
+        <section className="relative bg-background">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border max-w-6xl mx-auto">
+            <figure className="relative aspect-[4/3] overflow-hidden bg-secondary/20">
+              <img
+                src={aboutGreenhouse.src}
+                alt="ハウス栽培の風景"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <figcaption className="absolute bottom-0 left-0 right-0 px-4 py-2 bg-foreground/65 text-primary-foreground text-[10px] md:text-xs tracking-[0.25em] uppercase">
+                ハウス栽培 — Greenhouse
+              </figcaption>
+            </figure>
+            <figure className="relative aspect-[4/3] overflow-hidden bg-secondary/20">
+              <img
+                src={aboutHarvest.src}
+                alt="収穫した野菜の選別"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <figcaption className="absolute bottom-0 left-0 right-0 px-4 py-2 bg-foreground/65 text-primary-foreground text-[10px] md:text-xs tracking-[0.25em] uppercase">
+                収穫・選別 — Harvest
+              </figcaption>
+            </figure>
+            <figure className="relative aspect-[4/3] overflow-hidden bg-secondary/20 sm:col-span-2 lg:col-span-1">
+              <img
+                src={warehouseImg.src}
+                alt="物流拠点での出荷準備"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <figcaption className="absolute bottom-0 left-0 right-0 px-4 py-2 bg-foreground/65 text-primary-foreground text-[10px] md:text-xs tracking-[0.25em] uppercase">
+                出荷拠点 — Distribution
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
         {/* ── 会社外観 (photo band) ─────────────────── */}
         <section className="relative bg-background">
           <div className="container">
             <div className="max-w-5xl mx-auto">
               <figure className="relative overflow-hidden bg-secondary/30 min-h-[200px]">
                 <img
-                  src="https://t-agrifoods.com/wp-content/themes/agrifoods/images/company.jpg"
-                  alt="株式会社W・Hの社屋・物流拠点"
+                  src={warehouseImg.src}
+                  alt="株式会社W・Hの物流・出荷拠点"
                   loading="lazy"
                   className="w-full h-auto object-cover"
-                  onError={(e) => {
-                    const t = e.currentTarget;
-                    t.style.display = "none";
-                    const sib = t.nextElementSibling as HTMLElement | null;
-                    if (sib) sib.style.display = "flex";
-                  }}
                 />
-                <div
-                  className="hidden w-full aspect-[16/9] items-center justify-center bg-gradient-editorial text-primary-foreground"
-                  aria-hidden
-                >
-                  <div className="text-center px-6">
-                    <div className="text-[10px] tracking-[0.3em] uppercase text-sun mb-2">Head Office</div>
-                    <div className="font-serif text-2xl md:text-4xl font-bold">埼玉県 越谷</div>
-                    <div className="text-sm text-primary-foreground/70 mt-2">Distribution Center</div>
-                  </div>
-                </div>
                 <figcaption className="absolute bottom-0 left-0 right-0 px-5 py-3 md:px-7 md:py-4 bg-foreground/70 text-primary-foreground text-[11px] md:text-xs tracking-[0.25em] uppercase backdrop-blur-sm flex items-center gap-3">
                   <span className="h-px w-6 bg-sun" />
                   埼玉 越谷 ― Head Office &amp; Distribution Center
@@ -341,6 +369,21 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── Photo band between philosophy & history ─────── */}
+        <section className="relative h-44 md:h-72 overflow-hidden">
+          <img
+            src={aboutMixed.src}
+            alt="様々な産地の野菜"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/55 via-foreground/10 to-transparent" />
+          <div className="absolute bottom-4 md:bottom-8 left-0 right-0 container">
+            <div className="text-[10px] md:text-xs tracking-[0.35em] uppercase text-sun mb-1 md:mb-2">— Story</div>
+            <div className="font-serif text-xl md:text-3xl font-bold text-primary-foreground">日本の食卓を支えて、これまでも、これからも。</div>
           </div>
         </section>
 

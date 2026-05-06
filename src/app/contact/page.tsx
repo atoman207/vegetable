@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useReveal } from "@/hooks/use-reveal";
+import fieldOita from "@/assets/field-oita.jpg";
 
 const inquiryTypes = ["お問い合わせ", "お見積もり依頼", "取引について", "その他"];
 
@@ -81,8 +82,8 @@ export default function ContactPage() {
           tailJa="どうぞ。"
           description="仕入れのご相談、取扱品目のお問い合わせ、供給体制のご相談など。お客様のご要望に合わせた最適なご提案をいたします。"
           breadcrumb={[{ label: "お問い合わせ" }]}
-          backgroundImage="https://images.unsplash.com/photo-1751203659052-e9de7334c508?auto=format&fit=crop&w=1920&q=80"
-          backgroundAlt="日本の青果売り場に並ぶ新鮮な野菜"
+          backgroundImage={fieldOita.src}
+          backgroundAlt="大分の協力農家の畑風景"
         />
 
         <section ref={ref} className="py-16 md:py-24 bg-background relative overflow-hidden">

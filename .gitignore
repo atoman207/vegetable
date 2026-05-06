@@ -34,3 +34,6 @@ tsconfig.tsbuildinfo
 
 # Tooling
 .claude/scheduled_tasks.lock
+
+# Raw source photos (processed into src/assets/ via scripts/process-source-photos.mjs)
+写真素材WH/

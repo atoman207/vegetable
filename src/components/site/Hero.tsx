@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, Leaf, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-farm.jpg";
-import { FruitBackdrop } from "@/components/site/FruitBackdrop";
 
 export const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -47,14 +46,7 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-gradient-hero" />
       <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/30 to-transparent" />
 
-      {/* Seigaiha wave band at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 md:h-40 wa-seigaiha-light pointer-events-none opacity-70" />
-
-      {/* Decorative blobs */}
-      <div className="blob bg-sun/30 w-[420px] h-[420px] -top-20 -right-20 hidden md:block" />
-      <div className="blob bg-primary-glow/25 w-[360px] h-[360px] bottom-0 left-[20%] hidden md:block" style={{ animationDelay: "3s" }} />
-
-      {/* Floating leaves */}
+      {/* Floating leaves — subtle motion accents */}
       <div className="absolute top-[22%] right-[15%] text-sun/70 hidden md:block float-slow" aria-hidden>
         <Leaf className="h-10 w-10 rotate-12" strokeWidth={1.5} />
       </div>
@@ -62,13 +54,10 @@ export const Hero = () => {
         <Sparkles className="h-7 w-7" strokeWidth={1.5} />
       </div>
 
-      {/* Floating Japanese fruit decorations — opacity-tuned so the headline still pops */}
-      <FruitBackdrop density="sparse" className="opacity-50 mix-blend-screen" />
-
       {/* Vertical label — left edge */}
       <div className="absolute left-6 top-1/2 -translate-y-1/2 z-10 hidden lg:flex items-center gap-3 text-primary-foreground/70">
         <span className="writing-vertical text-[10px] tracking-[0.4em] uppercase font-medium">
-          W·H Inc. — Fresh Produce Network / Since 2008
+          W·H Inc. — Fresh Produce Network / Since 2011
         </span>
       </div>
 
@@ -87,7 +76,7 @@ export const Hero = () => {
           <div className="flex items-center gap-4 mb-6 md:mb-10">
             <span className="h-px w-10 md:w-12 bg-sun animate-draw-line origin-left" />
             <span className="text-[10px] md:text-xs tracking-[0.35em] uppercase font-medium text-sun">
-              Fresh · Trusted · Since 2008
+              Fresh · Trusted · Since 2011
             </span>
           </div>
 

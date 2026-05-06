@@ -5,16 +5,36 @@ import { ChevronRight, MapPin, Sparkles } from "lucide-react";
 import producer1 from "@/assets/producer-1.jpg";
 import producer2 from "@/assets/producer-2.jpg";
 import producer3 from "@/assets/producer-3.jpg";
+import producer4 from "@/assets/producer-4.jpg";
+import producer5 from "@/assets/producer-5.jpg";
+import producer6 from "@/assets/producer-6.jpg";
 import farmerHands from "@/assets/farmer-hands.jpg";
 import qualityCheck from "@/assets/quality-check.jpg";
 import vegetables from "@/assets/vegetables.jpg";
+import fieldHokkaido from "@/assets/field-hokkaido.jpg";
+import fieldOita from "@/assets/field-oita.jpg";
+import warehouseImg from "@/assets/warehouse.jpg";
 import { cn } from "@/lib/utils";
 import { useReveal } from "@/hooks/use-reveal";
 import { useProducers } from "@/hooks/use-content";
 import type { Producer } from "@/lib/database.types";
 
-const mainFallbacks = [producer1.src, producer2.src, producer3.src];
-const photoFallbacks = [farmerHands.src, qualityCheck.src, vegetables.src];
+const mainFallbacks = [
+  producer1.src,
+  producer2.src,
+  producer3.src,
+  producer4.src,
+  producer5.src,
+  producer6.src,
+];
+const photoFallbacks = [
+  farmerHands.src,
+  qualityCheck.src,
+  vegetables.src,
+  fieldHokkaido.src,
+  fieldOita.src,
+  warehouseImg.src,
+];
 
 // Pulls the "主な生産野菜" line — prefers the explicit column and falls
 // back to joining items, so older rows still render correctly.

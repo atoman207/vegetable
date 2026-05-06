@@ -5,8 +5,9 @@ import { ArrowUpRight, Truck, ShieldCheck, BadgeJapaneseYen, MapPin, Newspaper, 
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Footer } from "@/components/site/Footer";
-import { FruitGallery } from "@/components/site/FruitGallery";
-import { FruitBackdrop } from "@/components/site/FruitBackdrop";
+import { ProduceGallery } from "@/components/site/ProduceGallery";
+import { VeggieGallery } from "@/components/site/VeggieGallery";
+import { FieldsGallery } from "@/components/site/FieldsGallery";
 import { Button } from "@/components/ui/button";
 import { useReveal } from "@/hooks/use-reveal";
 import { useNews, useProducers } from "@/hooks/use-content";
@@ -15,6 +16,9 @@ import qualityCheck from "@/assets/quality-check.jpg";
 import producer1 from "@/assets/producer-1.jpg";
 import producer2 from "@/assets/producer-2.jpg";
 import producer3 from "@/assets/producer-3.jpg";
+import producer4 from "@/assets/producer-4.jpg";
+import producer5 from "@/assets/producer-5.jpg";
+import producer6 from "@/assets/producer-6.jpg";
 
 const strengthPreview = [
   { icon: Truck, title: "安定供給", en: "Stable Supply" },
@@ -22,7 +26,14 @@ const strengthPreview = [
   { icon: BadgeJapaneseYen, title: "適正価格", en: "Fair Pricing" },
 ];
 
-const fallbackProducerImgs = [producer1.src, producer2.src, producer3.src];
+const fallbackProducerImgs = [
+  producer1.src,
+  producer2.src,
+  producer3.src,
+  producer4.src,
+  producer5.src,
+  producer6.src,
+];
 
 export default function Home() {
   const ref = useReveal<HTMLDivElement>();
@@ -46,20 +57,16 @@ export default function Home() {
 
         {/* About preview */}
         <section className="py-20 md:py-32 bg-background relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-40 md:w-72 h-64 wa-asanoha opacity-40 pointer-events-none hidden md:block" />
-          <div className="blob bg-matcha/20 w-[300px] h-[300px] top-1/3 -left-20 hidden md:block" />
-          <FruitBackdrop density="sparse" className="opacity-40" />
-
           <div className="container relative">
             <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
               <div className="lg:col-span-5 reveal reveal-left">
                 <div className="relative group">
-                  <div className="absolute -top-4 -left-4 md:-top-6 md:-left-6 w-full h-full border-2 border-sun/60 hidden md:block" />
+                  <div className="absolute -top-4 -left-4 md:-top-6 md:-left-6 w-full h-full border-2 border-sun/60 hidden md:block transition-transform duration-500 group-hover:translate-x-1 group-hover:translate-y-1" />
                   <img
                     src={vegetables.src}
-                    alt="新鮮な野菜"
+                    alt="新鮮な野菜の盛り合わせ"
                     loading="lazy"
-                    className="relative w-full aspect-[4/5] object-cover shadow-elegant"
+                    className="relative w-full aspect-[4/5] object-cover shadow-elegant transition-transform duration-700 group-hover:scale-[1.02]"
                   />
                 </div>
               </div>
@@ -77,7 +84,7 @@ export default function Home() {
                   つなぐ。
                 </h2>
                 <p className="text-foreground/75 leading-loose text-[15px] max-w-xl mb-8">
-                  私たちW・H株式会社は、全国の生産者の皆さまと飲食・小売・加工業のお客様をつなぐ、産直流通の専門会社です。
+                  私たちW・H株式会社は、全国の生産者の皆さまと飲食・小売・加工業のお客様をつなぐ、産直流通・カット野菜の専門会社です。
                 </p>
                 <Button asChild variant="outline" className="rounded-none border-foreground hover:bg-foreground hover:text-primary-foreground tracking-[0.15em] uppercase text-xs h-12 px-6 group">
                   <Link href="/about">
@@ -92,8 +99,6 @@ export default function Home() {
 
         {/* Services preview */}
         <section className="py-20 md:py-32 bg-secondary relative overflow-hidden">
-          <div className="absolute inset-0 wa-shippou opacity-50 pointer-events-none" />
-
           <div className="container relative">
             <div className="grid lg:grid-cols-12 gap-10 items-end mb-12 md:mb-16">
               <div className="lg:col-span-7 reveal">
@@ -146,13 +151,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Japanese fruit gallery */}
-        <FruitGallery />
+        {/* Produce gallery */}
+        <ProduceGallery />
+
+        {/* Seasonal vegetable gallery */}
+        <VeggieGallery />
+
+        {/* Regional fields gallery */}
+        <FieldsGallery />
 
         {/* Producers preview */}
         <section className="py-20 md:py-32 bg-background relative overflow-hidden">
-          <div className="absolute bottom-0 left-0 right-0 h-32 wa-kikkou opacity-40 pointer-events-none" />
-
           <div className="container relative">
             <div className="grid lg:grid-cols-12 gap-10 items-end mb-12 md:mb-16">
               <div className="lg:col-span-7 reveal">
@@ -193,10 +202,11 @@ export default function Home() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform ease-out"
                       style={{ transitionDuration: "1200ms" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent opacity-50 group-hover:opacity-80 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/55 to-transparent opacity-55 group-hover:opacity-85 transition-opacity" />
                     <div className="absolute top-3 right-3 text-[10px] tracking-[0.3em] uppercase bg-foreground/40 backdrop-blur-sm px-3 py-1 text-primary-foreground">
                       {p.region}
                     </div>
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-sun translate-y-full group-hover:translate-y-0 transition-transform" />
                   </div>
                   <h3 className="font-serif text-xl font-bold text-foreground group-hover:text-primary transition-smooth">
                     {p.name}
@@ -210,8 +220,6 @@ export default function Home() {
 
         {/* News preview */}
         <section className="py-20 md:py-32 bg-secondary relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-40 md:w-64 h-48 wa-asanoha opacity-40 pointer-events-none" />
-
           <div className="container relative">
             <div className="grid lg:grid-cols-12 gap-10 items-end mb-10 md:mb-12">
               <div className="lg:col-span-7 reveal">
@@ -261,17 +269,14 @@ export default function Home() {
 
         {/* CTA */}
         <section className="py-20 md:py-28 bg-foreground text-primary-foreground relative overflow-hidden">
-          {/* Company-related background: on-site quality-check photo. */}
           <img
             src={qualityCheck.src}
             alt=""
             aria-hidden
-            className="absolute inset-0 w-full h-full object-cover opacity-35"
+            className="absolute inset-0 w-full h-full object-cover opacity-35 kenburns"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/85 via-foreground/70 to-foreground/55 pointer-events-none" />
-          <div className="absolute inset-0 wa-asanoha-light opacity-60 pointer-events-none" />
-          <div className="blob bg-sun/25 w-[400px] h-[400px] -bottom-20 -right-20 hidden md:block" />
 
           <div className="container relative">
             <div className="max-w-3xl mx-auto text-center">

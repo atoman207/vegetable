@@ -5,6 +5,7 @@ import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
 import { MapPin, Phone, Mail, Clock, Building2 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
+import pageHeroAccess from "@/assets/page-hero-access.jpg";
 
 const companyInfo = [
   { label: "会社名", value: "W・H株式会社 (W・H Inc.)" },
@@ -50,8 +51,8 @@ export default function AccessPage() {
           tailJa="。"
           description="本社および川口センターの所在地・連絡先をご案内します。会社情報についてはこちらをご覧ください。"
           breadcrumb={[{ label: "会社案内" }]}
-          backgroundImage="https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?auto=format&fit=crop&w=1920&q=80"
-          backgroundAlt="会社案内・アクセスを象徴する街並みの写真"
+          backgroundImage={pageHeroAccess.src}
+          backgroundAlt="協力農家の畑の風景"
         />
 
         <section ref={ref} className="py-20 md:py-32 bg-background relative overflow-hidden">

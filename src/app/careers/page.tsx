@@ -4,6 +4,9 @@ import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BriefcaseBusiness, Clock3, MapPin, Sprout, Users } from "lucide-react";
+import pageHeroCareers from "@/assets/page-hero-careers.jpg";
+import careersTeam from "@/assets/careers-team.jpg";
+import careersField from "@/assets/careers-field.jpg";
 
 const jobs = [
   {
@@ -61,24 +64,40 @@ export default function CareersPage() {
           tailJa="を募集しています。"
           description="産地と食卓をつなぐ現場で、地域と農業の未来を一緒につくりませんか。営業・品質・物流の各ポジションで採用を行っています。"
           breadcrumb={[{ label: "採用情報" }]}
-          backgroundImage="https://images.unsplash.com/photo-1708774150152-dce9d5ab82d4?auto=format&fit=crop&w=1920&q=80"
-          backgroundAlt="ハウスで野菜を収穫する農業スタッフ"
+          backgroundImage={pageHeroCareers.src}
+          backgroundAlt="出荷拠点で働くスタッフの様子"
         />
 
         <section className="py-16 md:py-24 bg-background relative overflow-hidden">
           <div className="absolute top-0 right-0 w-40 md:w-72 h-64 wa-shippou opacity-40 pointer-events-none hidden md:block" />
           <div className="container relative">
-            <div className="max-w-3xl mb-10 md:mb-14">
-              <span className="tag-pill bg-primary/5 text-primary">Message</span>
-              <h2 className="mt-4 font-serif text-3xl md:text-5xl font-bold text-foreground leading-[1.15] tracking-tight">
-                農業と流通の
-                <span className="italic font-normal text-primary">価値</span>
-                を、次世代へ。
-              </h2>
-              <p className="mt-5 text-foreground/75 leading-loose">
-                私たちは、生産者の想いを正しく届けること、そして取引先の現場が安心して使える品質を守ることを使命にしています。
-                現場目線を大切にしながら、改善を積み重ねていける方を歓迎します。
-              </p>
+            <div className="grid lg:grid-cols-12 gap-8 md:gap-12 mb-10 md:mb-14 items-center">
+              <div className="lg:col-span-7">
+                <span className="tag-pill bg-primary/5 text-primary">Message</span>
+                <h2 className="mt-4 font-serif text-3xl md:text-5xl font-bold text-foreground leading-[1.15] tracking-tight">
+                  農業と流通の
+                  <span className="italic font-normal text-primary">価値</span>
+                  を、次世代へ。
+                </h2>
+                <p className="mt-5 text-foreground/75 leading-loose">
+                  私たちは、生産者の想いを正しく届けること、そして取引先の現場が安心して使える品質を守ることを使命にしています。
+                  現場目線を大切にしながら、改善を積み重ねていける方を歓迎します。
+                </p>
+              </div>
+              <div className="lg:col-span-5">
+                <div className="relative aspect-[4/3] overflow-hidden border border-border/60">
+                  <img
+                    src={careersTeam.src}
+                    alt="出荷拠点で働くスタッフ"
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-foreground/70 to-transparent text-primary-foreground">
+                    <div className="text-[10px] tracking-[0.3em] uppercase text-sun">Team</div>
+                    <div className="font-serif text-base font-bold">現場で支え合うチーム</div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-4 md:gap-6">
@@ -134,6 +153,20 @@ export default function CareersPage() {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="relative h-48 md:h-72 overflow-hidden">
+          <img
+            src={careersField.src}
+            alt="協力農家の畑で収穫を学ぶ"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/55 via-foreground/10 to-transparent" />
+          <div className="absolute bottom-4 md:bottom-8 left-0 right-0 container">
+            <div className="text-[10px] md:text-xs tracking-[0.35em] uppercase text-sun mb-1 md:mb-2">— Field Visit</div>
+            <div className="font-serif text-xl md:text-3xl font-bold text-primary-foreground">産地に学ぶ研修制度</div>
           </div>
         </section>
 

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { FruitBackdrop } from "@/components/site/FruitBackdrop";
 
 type PageHeroProps = {
   number: string;
@@ -67,8 +66,6 @@ export const PageHero = ({
       {!hasImage && <div className="absolute inset-0 wa-seigaiha-light pointer-events-none" />}
       <div className="blob bg-sun/25 w-[400px] h-[400px] -top-20 -right-20 hidden md:block" />
       <div className="blob bg-primary-glow/20 w-[300px] h-[300px] bottom-0 left-[15%] hidden md:block" style={{ animationDelay: "3s" }} />
-      {/* Subtle floating fruit decoration on every page hero — keeps a consistent fruit theme. */}
-      <FruitBackdrop density="sparse" className="opacity-40 mix-blend-screen" />
 
       <div className="container relative">
         <div className="flex items-center gap-2 text-[10px] md:text-xs tracking-[0.25em] uppercase text-primary-foreground/60 mb-8 md:mb-12">

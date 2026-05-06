@@ -2,19 +2,28 @@
 
 import { ArrowRight, HelpCircle } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
+import solutionSupply from "@/assets/solution-supply.jpg";
+import solutionProcessing from "@/assets/solution-processing.jpg";
+import solutionPricing from "@/assets/solution-pricing.jpg";
 
 const pairs = [
   {
     problem: "原料の欠品で困っている",
     solution: "全国の協力農場と連携した供給体制で、年間を通じた安定調達を実現します。",
+    image: solutionSupply.src,
+    imageAlt: "出荷拠点に並ぶ野菜の在庫",
   },
   {
     problem: "下処理・加工まで対応してほしい",
     solution: "カット・洗浄・パック詰めなど、お客様のご要望に応じた加工対応が可能です。",
+    image: solutionProcessing.src,
+    imageAlt: "じゃがいもの加工処理の様子",
   },
   {
     problem: "予算内で安定的に調達したい",
     solution: "中間流通コストを抑え、ご予算に応じた最適価格でのご提案が可能です。",
+    image: solutionPricing.src,
+    imageAlt: "収穫した野菜の出荷準備",
   },
 ];
 
@@ -62,11 +71,21 @@ export const Solutions = () => {
           {pairs.map((p, i) => (
             <div
               key={i}
-              className="group grid md:grid-cols-[80px_1fr_1fr] gap-4 md:gap-10 items-start py-8 md:py-12 border-t border-border last:border-b hover:bg-secondary/60 hover:px-4 md:hover:px-6 transition-all duration-500 px-2 md:px-6 -mx-2 md:-mx-6 reveal"
+              className="group grid md:grid-cols-[140px_1fr_1fr] gap-4 md:gap-8 items-start py-8 md:py-12 border-t border-border last:border-b hover:bg-secondary/60 hover:px-4 md:hover:px-6 transition-all duration-500 px-2 md:px-6 -mx-2 md:-mx-6 reveal"
               style={{ transitionDelay: `${i * 120}ms` }}
             >
-              <div className="font-serif text-3xl md:text-4xl text-primary/30 italic group-hover:text-primary/70 transition-smooth">
-                0{i + 1}.
+              <div className="flex md:flex-col items-start gap-3 md:gap-4">
+                <span className="font-serif text-3xl md:text-4xl text-primary/30 italic group-hover:text-primary/70 transition-smooth shrink-0">
+                  0{i + 1}.
+                </span>
+                <div className="relative w-32 md:w-full aspect-[4/3] overflow-hidden border border-border/60 bg-secondary/30">
+                  <img
+                    src={p.image}
+                    alt={p.imageAlt}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
               </div>
               <div>
                 <div className="text-[10px] tracking-[0.3em] text-muted-foreground uppercase mb-3">Issue</div>

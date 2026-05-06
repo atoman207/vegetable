@@ -4,12 +4,22 @@ import Link from "next/link";
 import producer1 from "@/assets/producer-1.jpg";
 import producer2 from "@/assets/producer-2.jpg";
 import producer3 from "@/assets/producer-3.jpg";
+import producer4 from "@/assets/producer-4.jpg";
+import producer5 from "@/assets/producer-5.jpg";
+import producer6 from "@/assets/producer-6.jpg";
 import { ArrowUpRight, Users } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { useProducers } from "@/hooks/use-content";
 
 // Fallback images (cycled by producer sort order) when a row has no image_url.
-const fallbackImages = [producer1.src, producer2.src, producer3.src];
+const fallbackImages = [
+  producer1.src,
+  producer2.src,
+  producer3.src,
+  producer4.src,
+  producer5.src,
+  producer6.src,
+];
 
 export const Producers = () => {
   const ref = useReveal<HTMLDivElement>();
